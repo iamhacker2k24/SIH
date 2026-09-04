@@ -128,7 +128,7 @@ export default function FarmerHomeHub({ currentUser, selectedState }) {
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
           <h2 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 700 }}>
-            🌾 Farmer Quick Services
+            🌾 Krishi Services Hub
           </h2>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Click any card to open page</span>
         </div>

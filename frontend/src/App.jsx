@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import RoleBanner from './components/RoleBanner';
 import AuthModal from './components/AuthModal';
 import FloatingAiChat from './components/FloatingAiChat';
 import FarmerHomeHub from './pages/FarmerHomeHub';
@@ -15,6 +14,8 @@ import AdminPanel from './pages/AdminPanel';
 import MandiDirectory from './pages/MandiDirectory';
 import GovernmentSchemes from './pages/GovernmentSchemes';
 import AgriLoans from './pages/AgriLoans';
+import BuyerPanel from './pages/BuyerPanel';
+import FpoPanel from './pages/FpoPanel';
 
 export default function App() {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
@@ -59,11 +60,6 @@ export default function App() {
         currentUser={currentUser}
       />
 
-      <RoleBanner
-        currentUser={currentUser}
-        setCurrentUser={handleSetUser}
-      />
-
       <main className="main-content">
         <Routes>
           <Route path="/" element={<FarmerHomeHub currentUser={currentUser} selectedState={selectedState} />} />
@@ -76,6 +72,8 @@ export default function App() {
           <Route path="/logistics" element={<LogisticsStorage currentUser={currentUser} selectedState={selectedState} />} />
           <Route path="/orders" element={<OrdersEscrow currentUser={currentUser} />} />
           <Route path="/grievance" element={<GrievanceDesk currentUser={currentUser} />} />
+          <Route path="/buyer" element={<BuyerPanel currentUser={currentUser} />} />
+          <Route path="/fpo" element={<FpoPanel currentUser={currentUser} />} />
           <Route path="/admin" element={<AdminPanel currentUser={currentUser} />} />
           <Route path="*" element={<FarmerHomeHub currentUser={currentUser} selectedState={selectedState} />} />
         </Routes>

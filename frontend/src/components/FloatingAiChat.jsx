@@ -75,7 +75,7 @@ export default function FloatingAiChat({ selectedLanguage, selectedState }) {
             justifyContent: 'space-between',
             borderBottom: '1px solid var(--border-color)'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.60rem' }}>
               <div style={{
                 width: '34px',
                 height: '34px',

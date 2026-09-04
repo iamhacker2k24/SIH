@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck, Menu, X, Globe, MapPin, UserCheck, Users } from 'lucide-react';
+import {
+  Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck,
+  Globe, MapPin, UserCheck, Users, Building2, ChevronDown
+} from 'lucide-react';
 
 export default function Navbar({
   selectedLanguage,
@@ -10,7 +13,6 @@ export default function Navbar({
   onOpenAuth,
   currentUser
 }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,29 +26,26 @@ export default function Navbar({
 
   const languages = [
     { code: 'English', label: 'English' },
-    { code: 'Hindi', label: 'हिन्दी (Hindi)' },
-    { code: 'Punjabi', label: 'ਪੰਜਾਬੀ (Punjabi)' },
-    { code: 'Gujarati', label: 'ગુજરાતી (Gujarati)' },
-    { code: 'Marathi', label: 'मराठी (Marathi)' },
-    { code: 'Telugu', label: 'తెలుగు (Telugu)' },
-    { code: 'Tamil', label: 'தமிழ் (Tamil)' }
+    { code: 'Hindi', label: 'हिन्दी' },
+    { code: 'Punjabi', label: 'ਪੰਜਾਬੀ' },
+    { code: 'Gujarati', label: 'ગુજરાતી' },
+    { code: 'Marathi', label: 'ਮਰਾਠੀ' },
+    { code: 'Telugu', label: 'తెలుగు' },
+    { code: 'Tamil', label: 'தமிழ்' }
   ];
 
   const navItems = [
-    { path: '/', label: 'Farmer Home Hub', icon: Sprout },
-    { path: '/price', label: 'Check Live Prices', icon: TrendingUp },
-    { path: '/marketplace', label: 'Sell & Buy Market', icon: Store },
-    { path: '/match', label: 'Smart Match', icon: Zap },
-    { path: '/logistics', label: 'Book Storage', icon: Warehouse },
-    { path: '/orders', label: 'Payouts & Escrow', icon: ShieldCheck },
-    { path: '/grievance', label: 'Report & Support', icon: ShieldAlert },
-    ...(currentUser?.role === 'Admin' ? [{ path: '/admin', label: 'Admin Staff Portal', icon: Users }] : [])
+    { path: '/', label: 'Home', icon: Sprout },
+    { path: '/price', label: 'Prices', icon: TrendingUp },
+    { path: '/marketplace', label: 'Market', icon: Store },
+    { path: '/buyer', label: 'Buyer', icon: Building2 },
+    { path: '/fpo', label: 'FPO Hub', icon: Users },
+    { path: '/match', label: 'Match', icon: Zap },
+    { path: '/logistics', label: 'Logistics', icon: Warehouse },
+    { path: '/orders', label: 'Escrow', icon: ShieldCheck },
+    { path: '/grievance', label: 'Support', icon: ShieldAlert },
+    ...(currentUser?.role === 'Admin' ? [{ path: '/admin', label: 'Admin', icon: Users }] : [])
   ];
-
-  const handleNavClick = (path) => {
-    navigate(path);
-    setMobileOpen(false);
-  };
 
   return (
     <header style={{
@@ -58,171 +57,172 @@ export default function Navbar({
       backdropFilter: 'blur(12px)',
       boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
     }}>
+      {/* Single Ultra-Compact Header Bar */}
       <div style={{
-        maxWidth: '1380px',
+        maxWidth: '1440px',
         margin: '0 auto',
-        padding: '0.75rem 1.25rem',
+        padding: '0.4rem 0.85rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: '1rem'
+        gap: '0.6rem'
       }}>
         {/* Brand Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }} onClick={() => navigate('/')}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', flexShrink: 0 }} onClick={() => navigate('/')}>
           <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '12px',
+            width: '28px',
+            height: '28px',
+            borderRadius: '8px',
             background: 'linear-gradient(135deg, var(--primary) 0%, #059669 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 0 15px rgba(16, 185, 129, 0.5)'
+            boxShadow: '0 0 10px rgba(16, 185, 129, 0.4)'
           }}>
-            <Sprout size={24} color="#fff" />
+            <Sprout size={16} color="#fff" />
           </div>
 
           <div>
-            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>
+            <div style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>
               Krishi<span style={{ color: 'var(--primary)' }}>Link</span>
             </div>
-            <div style={{ fontSize: '0.65rem', color: 'var(--accent-gold)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.5px' }}>
-              Agri Market & Price Discovery
-            </div>
           </div>
         </div>
 
-        {/* Global Controls: State Search & Language & Account Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
-          {/* State Search Selector */}
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-            <MapPin size={16} color="var(--primary)" style={{ position: 'absolute', left: '0.6rem', zIndex: 2 }} />
-            <select
-              value={selectedState}
-              onChange={(e) => setSelectedState(e.target.value)}
-              className="form-select"
-              style={{
-                paddingLeft: '2.1rem',
-                paddingTop: '0.4rem',
-                paddingBottom: '0.4rem',
-                fontSize: '0.85rem',
-                width: '160px',
-                borderRadius: '20px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                borderColor: 'var(--border-color)',
-                color: '#fff'
-              }}
-            >
-              <option value="">Select State / Mandi...</option>
-              {indianStates.map(state => (
-                <option key={state} value={state} style={{ background: '#0a1f16', color: '#fff' }}>{state}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Multilingual Selector */}
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-            <Globe size={16} color="var(--accent-gold)" style={{ position: 'absolute', left: '0.6rem', zIndex: 2 }} />
-            <select
-              value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="form-select"
-              style={{
-                paddingLeft: '2.1rem',
-                paddingTop: '0.4rem',
-                paddingBottom: '0.4rem',
-                fontSize: '0.85rem',
-                width: '145px',
-                borderRadius: '20px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                borderColor: 'var(--border-color)',
-                color: '#fff'
-              }}
-            >
-              {languages.map(lang => (
-                <option key={lang.code} value={lang.code} style={{ background: '#0a1f16', color: '#fff' }}>{lang.label}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Persona Account Badge / Switcher */}
-          <button
-            onClick={onOpenAuth}
-            className="btn btn-outline"
-            style={{
-              borderRadius: '20px',
-              padding: '0.4rem 0.85rem',
-              fontSize: '0.825rem',
-              borderColor: 'var(--primary)',
-              color: '#fff',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem'
-            }}
-          >
-            <UserCheck size={16} color="var(--primary)" />
-            <span>{currentUser?.name || 'Login / Demo'}</span>
-          </button>
-
-          {/* Mobile Menu Toggle Button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="btn btn-outline"
-            style={{
-              padding: '0.4rem 0.6rem',
-              borderRadius: '8px',
-              color: '#fff',
-              borderColor: 'var(--border-color)'
-            }}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Drawer Menu for Page Links */}
-      {mobileOpen && (
+        {/* Center Navigation Links (Inline Single Line) */}
         <div style={{
-          background: 'rgba(5, 15, 10, 0.98)',
-          borderBottom: '1px solid var(--border-color)',
-          padding: '1rem 1.25rem',
           display: 'flex',
-          flexDirection: 'column',
-          gap: '0.5rem',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.8)'
+          alignItems: 'center',
+          gap: '0.2rem',
+          overflowX: 'auto',
+          whiteSpace: 'nowrap',
+          padding: '0.1rem 0'
         }}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '0.25rem' }}>
-            Navigation Pages
-          </div>
           {navItems.map(item => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
               <button
                 key={item.path}
-                onClick={() => handleNavClick(item.path)}
+                onClick={() => navigate(item.path)}
                 style={{
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.75rem',
-                  padding: '0.75rem 1rem',
-                  borderRadius: 'var(--radius-md)',
-                  background: isActive ? 'var(--primary-glow)' : 'rgba(255, 255, 255, 0.03)',
-                  color: isActive ? 'var(--primary)' : 'var(--text-muted)',
-                  border: isActive ? '1px solid var(--primary)' : '1px solid var(--border-color)',
+                  gap: '0.25rem',
+                  padding: '0.25rem 0.45rem',
+                  borderRadius: '8px',
+                  background: isActive ? 'rgba(16, 185, 129, 0.15)' : 'transparent',
+                  color: isActive ? '#34d399' : 'var(--text-muted)',
+                  border: isActive ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid transparent',
                   fontWeight: isActive ? 700 : 500,
-                  fontSize: '0.95rem',
+                  fontSize: '0.75rem',
                   cursor: 'pointer',
-                  textAlign: 'left'
+                  transition: 'all 0.15s ease',
+                  flexShrink: 0
                 }}
               >
-                <Icon size={18} />
+                <Icon size={12} />
                 {item.label}
               </button>
             );
           })}
         </div>
-      )}
+
+        {/* Global Selectors & Profile Button (Zero Gap Design) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
+          {/* State Selector */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.2rem',
+            background: 'rgba(255, 255, 255, 0.06)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '10px',
+            padding: '0.2rem 0.4rem',
+            cursor: 'pointer'
+          }}>
+            <MapPin size={12} color="var(--primary)" style={{ flexShrink: 0 }} />
+            <select
+              value={selectedState}
+              onChange={(e) => setSelectedState(e.target.value)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#fff',
+                fontSize: '0.75rem',
+                outline: 'none',
+                cursor: 'pointer',
+                WebkitAppearance: 'none',
+                MozAppearance: 'none',
+                appearance: 'none',
+                padding: 0,
+                margin: 0
+              }}
+            >
+              <option value="" style={{ background: '#0a1f16', color: '#fff' }}>State</option>
+              {indianStates.map(state => (
+                <option key={state} value={state} style={{ background: '#0a1f16', color: '#fff' }}>{state}</option>
+              ))}
+            </select>
+            <ChevronDown size={11} color="var(--text-muted)" style={{ flexShrink: 0, pointerEvents: 'none' }} />
+          </div>
+
+          {/* Language Selector */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.2rem',
+            background: 'rgba(255, 255, 255, 0.06)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '10px',
+            padding: '0.2rem 0.4rem',
+            cursor: 'pointer'
+          }}>
+            <Globe size={12} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+            <select
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#fff',
+                fontSize: '0.75rem',
+                outline: 'none',
+                cursor: 'pointer',
+                WebkitAppearance: 'none',
+                MozAppearance: 'none',
+                appearance: 'none',
+                padding: 0,
+                margin: 0
+              }}
+            >
+              {languages.map(lang => (
+                <option key={lang.code} value={lang.code} style={{ background: '#0a1f16', color: '#fff' }}>{lang.label}</option>
+              ))}
+            </select>
+            <ChevronDown size={11} color="var(--text-muted)" style={{ flexShrink: 0, pointerEvents: 'none' }} />
+          </div>
+
+          {/* User Profile Button */}
+          <button
+            onClick={onOpenAuth}
+            className="btn btn-outline"
+            style={{
+              borderRadius: '10px',
+              padding: '0.2rem 0.5rem',
+              fontSize: '0.75rem',
+              borderColor: 'var(--primary)',
+              color: '#fff',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.25rem'
+            }}
+          >
+            <UserCheck size={12} color="var(--primary)" />
+            <span>{currentUser?.name ? currentUser.name.split(' ')[0] : 'Login'}</span>
+          </button>
+        </div>
+      </div>
     </header>
   );
 }
