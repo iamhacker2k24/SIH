@@ -123,11 +123,11 @@ export default function SmartMatch({ currentUser }) {
                 </div>
 
                 {/* Action & Profit Delta */}
-                <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <div style={{ fontSize: '0.8rem', color: 'var(--primary)', fontWeight: 600 }}>
                     {match.recommendation}
                   </div>
-                  <button className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem' }}>
+                  <button className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', width: '100%' }}>
                     Initiate Direct Linkage Deal <ArrowRight size={14} />
                   </button>
                 </div>

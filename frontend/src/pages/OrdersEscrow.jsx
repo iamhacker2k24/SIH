@@ -77,7 +77,7 @@ export default function OrdersEscrow() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {orders.map(order => (
               <div key={order.id} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+                <div className="responsive-header-banner" style={{ alignItems: 'flex-start' }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                       <span className="badge badge-gold">Order #{order.id}</span>
@@ -91,7 +91,7 @@ export default function OrdersEscrow() {
                     </div>
                   </div>
 
-                  <div style={{ textAlign: 'right' }}>
+                  <div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Contract Escrow Value</div>
                     <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--primary)' }}>
                       ₹{order.totalAmount.toLocaleString('en-IN')}

@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import RoleBanner from './components/RoleBanner';
 import AuthModal from './components/AuthModal';
 import FloatingAiChat from './components/FloatingAiChat';
+import FarmerHomeHub from './pages/FarmerHomeHub';
 import PriceDiscovery from './pages/PriceDiscovery';
 import Marketplace from './pages/Marketplace';
 import SmartMatch from './pages/SmartMatch';
 import LogisticsStorage from './pages/LogisticsStorage';
 import OrdersEscrow from './pages/OrdersEscrow';
 import GrievanceDesk from './pages/GrievanceDesk';
+import AdminPanel from './pages/AdminPanel';
+import MandiDirectory from './pages/MandiDirectory';
+import GovernmentSchemes from './pages/GovernmentSchemes';
+import AgriLoans from './pages/AgriLoans';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('price');
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [selectedState, setSelectedState] = useState('');
 
@@ -27,8 +32,8 @@ export default function App() {
     }
     return {
       id: 'u-1',
-      name: 'Gurpreet Singh (Malwa FPO)',
-      role: 'FPO'
+      name: 'Ramesh Patel (Farmer)',
+      role: 'Farmer'
     };
   });
 
@@ -43,22 +48,15 @@ export default function App() {
     document.cookie = `krishilink_user=${encodeURIComponent(JSON.stringify(user))}; path=/; max-age=2592000`;
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('krishilink_user');
-    document.cookie = `krishilink_user=; path=/; max-age=0`;
-    setIsAuthOpen(true);
-  };
-
   return (
     <div className="app-container">
       <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
         selectedLanguage={selectedLanguage}
         setSelectedLanguage={setSelectedLanguage}
         selectedState={selectedState}
         setSelectedState={setSelectedState}
         onOpenAuth={() => setIsAuthOpen(true)}
+        currentUser={currentUser}
       />
 
       <RoleBanner
@@ -67,12 +65,20 @@ export default function App() {
       />
 
       <main className="main-content">
-        {activeTab === 'price' && <PriceDiscovery selectedState={selectedState} />}
-        {activeTab === 'marketplace' && <Marketplace currentUser={currentUser} selectedState={selectedState} />}
-        {activeTab === 'match' && <SmartMatch currentUser={currentUser} selectedState={selectedState} />}
-        {activeTab === 'logistics' && <LogisticsStorage currentUser={currentUser} selectedState={selectedState} />}
-        {activeTab === 'orders' && <OrdersEscrow currentUser={currentUser} />}
-        {activeTab === 'grievance' && <GrievanceDesk currentUser={currentUser} />}
+        <Routes>
+          <Route path="/" element={<FarmerHomeHub currentUser={currentUser} selectedState={selectedState} />} />
+          <Route path="/price" element={<PriceDiscovery selectedState={selectedState} />} />
+          <Route path="/marketplace" element={<Marketplace currentUser={currentUser} selectedState={selectedState} />} />
+          <Route path="/mandis" element={<MandiDirectory selectedState={selectedState} />} />
+          <Route path="/schemes" element={<GovernmentSchemes />} />
+          <Route path="/loans" element={<AgriLoans currentUser={currentUser} />} />
+          <Route path="/match" element={<SmartMatch currentUser={currentUser} selectedState={selectedState} />} />
+          <Route path="/logistics" element={<LogisticsStorage currentUser={currentUser} selectedState={selectedState} />} />
+          <Route path="/orders" element={<OrdersEscrow currentUser={currentUser} />} />
+          <Route path="/grievance" element={<GrievanceDesk currentUser={currentUser} />} />
+          <Route path="/admin" element={<AdminPanel currentUser={currentUser} />} />
+          <Route path="*" element={<FarmerHomeHub currentUser={currentUser} selectedState={selectedState} />} />
+        </Routes>
       </main>
 
       <FloatingAiChat
@@ -96,9 +102,6 @@ export default function App() {
         background: '#070f0b'
       }}>
         <div>🌾 <strong>KrishiLink</strong> — Market Linkages & Price Discovery Platform</div>
-        <div style={{ marginTop: '0.25rem', opacity: 0.7 }}>
-          Built with Node.js, Express, Mongoose & React.js | Language: {selectedLanguage} | Region: {selectedState || 'All India'}
-        </div>
       </footer>
     </div>
   );

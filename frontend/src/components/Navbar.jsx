@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck, Menu, X, Globe, MapPin, UserCheck, LogOut } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck, Menu, X, Globe, MapPin, UserCheck, Users } from 'lucide-react';
 
 export default function Navbar({
-  activeTab,
-  setActiveTab,
   selectedLanguage,
   setSelectedLanguage,
   selectedState,
@@ -12,6 +11,8 @@ export default function Navbar({
   currentUser
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const indianStates = [
     'All India', 'Punjab', 'Haryana', 'Uttar Pradesh', 'Madhya Pradesh',
@@ -32,16 +33,18 @@ export default function Navbar({
   ];
 
   const navItems = [
-    { id: 'price', label: 'Price Discovery & AI', icon: TrendingUp },
-    { id: 'marketplace', label: 'Produce Market', icon: Store },
-    { id: 'match', label: 'Smart Match', icon: Zap },
-    { id: 'logistics', label: 'Storage & Freight', icon: Warehouse },
-    { id: 'orders', label: 'Escrow & Pay', icon: ShieldCheck },
-    { id: 'grievance', label: 'Dispute Desk', icon: ShieldAlert }
+    { path: '/', label: 'Farmer Home Hub', icon: Sprout },
+    { path: '/price', label: 'Check Live Prices', icon: TrendingUp },
+    { path: '/marketplace', label: 'Sell & Buy Market', icon: Store },
+    { path: '/match', label: 'Smart Match', icon: Zap },
+    { path: '/logistics', label: 'Book Storage', icon: Warehouse },
+    { path: '/orders', label: 'Payouts & Escrow', icon: ShieldCheck },
+    { path: '/grievance', label: 'Report & Support', icon: ShieldAlert },
+    ...(currentUser?.role === 'Admin' ? [{ path: '/admin', label: 'Admin Staff Portal', icon: Users }] : [])
   ];
 
-  const handleTabClick = (id) => {
-    setActiveTab(id);
+  const handleNavClick = (path) => {
+    navigate(path);
     setMobileOpen(false);
   };
 
@@ -62,147 +65,162 @@ export default function Navbar({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: '1rem',
-        flexWrap: 'wrap'
+        gap: '1rem'
       }}>
         {/* Brand Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }} onClick={() => setActiveTab('price')}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }} onClick={() => navigate('/')}>
           <div style={{
-            width: '42px',
-            height: '42px',
-            borderRadius: '14px',
-            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+            width: '40px',
+            height: '40px',
+            borderRadius: '12px',
+            background: 'linear-gradient(135deg, var(--primary) 0%, #059669 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 0 18px rgba(16, 185, 129, 0.45)',
-            transform: 'rotate(-2deg)'
+            boxShadow: '0 0 15px rgba(16, 185, 129, 0.5)'
           }}>
-            <Sprout size={24} color="#ffffff" />
+            <Sprout size={24} color="#fff" />
           </div>
+
           <div>
-            <div style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '-0.03em', color: '#f0fdf4' }}>
+            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.5px' }}>
               Krishi<span style={{ color: 'var(--primary)' }}>Link</span>
             </div>
-            <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-              Market Linkages & Price Discovery Platform
+            <div style={{ fontSize: '0.65rem', color: 'var(--accent-gold)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.5px' }}>
+              Agri Market & Price Discovery
             </div>
           </div>
         </div>
 
-        {/* Desktop Navigation Pills */}
-        <nav className="nav-desktop">
-          {navItems.map(item => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleTabClick(item.id)}
-                className={`nav-pill-btn ${isActive ? 'nav-pill-btn-active' : 'nav-pill-btn-inactive'}`}
-              >
-                <Icon size={16} color={isActive ? '#34d399' : 'var(--text-muted)'} />
-                {item.label}
-              </button>
-            );
-          })}
-        </nav>
-
-        {/* State Filter & Multilingual & Account Switcher Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+        {/* Global Controls: State Search & Language & Account Switcher */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
           {/* State Search Selector */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: '#05100b', padding: '0.25rem 0.5rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)' }}>
-            <MapPin size={14} color="var(--primary)" />
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+            <MapPin size={16} color="var(--primary)" style={{ position: 'absolute', left: '0.6rem', zIndex: 2 }} />
             <select
               value={selectedState}
-              onChange={e => setSelectedState(e.target.value)}
-              style={{ background: 'transparent', border: 'none', color: '#fff', fontSize: '0.75rem', fontWeight: 600, outline: 'none', cursor: 'pointer' }}
+              onChange={(e) => setSelectedState(e.target.value)}
+              className="form-select"
+              style={{
+                paddingLeft: '2.1rem',
+                paddingTop: '0.4rem',
+                paddingBottom: '0.4rem',
+                fontSize: '0.85rem',
+                width: '160px',
+                borderRadius: '20px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderColor: 'var(--border-color)',
+                color: '#fff'
+              }}
             >
-              {indianStates.map(st => (
-                <option key={st} value={st === 'All India' ? '' : st} style={{ background: '#0e2017', color: '#fff' }}>
-                  {st}
-                </option>
+              <option value="">Select State / Mandi...</option>
+              {indianStates.map(state => (
+                <option key={state} value={state} style={{ background: '#0a1f16', color: '#fff' }}>{state}</option>
               ))}
             </select>
           </div>
 
           {/* Multilingual Selector */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: '#05100b', padding: '0.25rem 0.5rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)' }}>
-            <Globe size={14} color="var(--accent-gold)" />
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+            <Globe size={16} color="var(--accent-gold)" style={{ position: 'absolute', left: '0.6rem', zIndex: 2 }} />
             <select
               value={selectedLanguage}
-              onChange={e => setSelectedLanguage(e.target.value)}
-              style={{ background: 'transparent', border: 'none', color: 'var(--accent-gold)', fontSize: '0.75rem', fontWeight: 700, outline: 'none', cursor: 'pointer' }}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              className="form-select"
+              style={{
+                paddingLeft: '2.1rem',
+                paddingTop: '0.4rem',
+                paddingBottom: '0.4rem',
+                fontSize: '0.85rem',
+                width: '145px',
+                borderRadius: '20px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderColor: 'var(--border-color)',
+                color: '#fff'
+              }}
             >
               {languages.map(lang => (
-                <option key={lang.code} value={lang.code} style={{ background: '#0e2017', color: '#fff' }}>
-                  {lang.label}
-                </option>
+                <option key={lang.code} value={lang.code} style={{ background: '#0a1f16', color: '#fff' }}>{lang.label}</option>
               ))}
             </select>
           </div>
 
-          {/* Account & Persona Button */}
-          {onOpenAuth && (
-            <button
-              onClick={onOpenAuth}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                background: 'var(--primary-light)',
-                border: '1px solid var(--primary)',
-                color: '#34d399',
-                padding: '0.3rem 0.65rem',
-                borderRadius: 'var(--radius-full)',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                cursor: 'pointer'
-              }}
-            >
-              <UserCheck size={14} /> {currentUser?.name ? currentUser.name.split(' ')[0] : 'Account'} ({currentUser?.role || 'User'})
-            </button>
-          )}
-
-          {/* Mobile Hamburger Toggle Button */}
+          {/* Persona Account Badge / Switcher */}
           <button
-            className="nav-mobile-toggle"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle navigation menu"
+            onClick={onOpenAuth}
+            className="btn btn-outline"
+            style={{
+              borderRadius: '20px',
+              padding: '0.4rem 0.85rem',
+              fontSize: '0.825rem',
+              borderColor: 'var(--primary)',
+              color: '#fff',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem'
+            }}
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            <UserCheck size={16} color="var(--primary)" />
+            <span>{currentUser?.name || 'Login / Demo'}</span>
+          </button>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="btn btn-outline"
+            style={{
+              padding: '0.4rem 0.6rem',
+              borderRadius: '8px',
+              color: '#fff',
+              borderColor: 'var(--border-color)'
+            }}
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Drawer Menu for Page Links */}
       {mobileOpen && (
-        <div className="nav-mobile-drawer">
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.25rem', paddingLeft: '0.5rem' }}>
-            NAVIGATION MENU:
+        <div style={{
+          background: 'rgba(5, 15, 10, 0.98)',
+          borderBottom: '1px solid var(--border-color)',
+          padding: '1rem 1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.8)'
+        }}>
+          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '0.25rem' }}>
+            Navigation Pages
           </div>
           {navItems.map(item => {
             const Icon = item.icon;
-            const isActive = activeTab === item.id;
+            const isActive = location.pathname === item.path;
             return (
               <button
-                key={item.id}
-                onClick={() => handleTabClick(item.id)}
-                className={`mobile-nav-item ${isActive ? 'mobile-nav-item-active' : 'mobile-nav-item-inactive'}`}
+                key={item.path}
+                onClick={() => handleNavClick(item.path)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  padding: '0.75rem 1rem',
+                  borderRadius: 'var(--radius-md)',
+                  background: isActive ? 'var(--primary-glow)' : 'rgba(255, 255, 255, 0.03)',
+                  color: isActive ? 'var(--primary)' : 'var(--text-muted)',
+                  border: isActive ? '1px solid var(--primary)' : '1px solid var(--border-color)',
+                  fontWeight: isActive ? 700 : 500,
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  textAlign: 'left'
+                }}
               >
-                <Icon size={18} color={isActive ? '#34d399' : 'var(--text-muted)'} />
-                <span style={{ flex: 1 }}>{item.label}</span>
+                <Icon size={18} />
+                {item.label}
               </button>
             );
           })}
-
-          <button
-            onClick={() => { setMobileOpen(false); if (onOpenAuth) onOpenAuth(); }}
-            className="btn btn-outline"
-            style={{ marginTop: '0.5rem', width: '100%', borderRadius: 'var(--radius-md)' }}
-          >
-            <UserCheck size={16} /> Switch Account / Demo Persona
-          </button>
         </div>
       )}
     </header>

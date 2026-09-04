@@ -258,6 +258,12 @@ h1, h2, h3, h4 {
   gap: 0.4rem;
 }
 
+.nav-desktop-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .nav-mobile-toggle {
   display: none;
   background: rgba(16, 185, 129, 0.15);
@@ -273,7 +279,7 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 990px) {
-  .nav-desktop {
+  .nav-desktop, .nav-desktop-controls {
     display: none !important;
   }
   .nav-mobile-toggle {
@@ -366,7 +372,7 @@ h1, h2, h3, h4 {
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.25rem;
 }
 
@@ -412,6 +418,53 @@ h1, h2, h3, h4 {
   }
   .match-item-card > div {
     text-align: left !important;
+  }
+}
+
+/* Responsive Layout Helpers */
+.responsive-header-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.responsive-filter-bar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.responsive-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .responsive-header-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .responsive-header-banner button, .responsive-header-banner .btn {
+    width: 100%;
+  }
+
+  .responsive-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .responsive-filter-bar input,
+  .responsive-filter-bar select {
+    width: 100% !important;
+  }
+
+  .responsive-stat-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
   }
 }
 

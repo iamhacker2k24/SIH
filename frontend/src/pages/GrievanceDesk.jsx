@@ -72,21 +72,16 @@ export default function GrievanceDesk({ currentUser }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Header Banner */}
-      <div className="glass-card" style={{
+      <div className="glass-card responsive-header-banner" style={{
         background: 'linear-gradient(135deg, #2b1111 0%, #170a0a 100%)',
-        border: '1px solid rgba(239, 68, 68, 0.3)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: '1rem'
+        border: '1px solid rgba(239, 68, 68, 0.3)'
       }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
             <ShieldAlert color="var(--accent-red)" size={24} />
-            <h2 style={{ fontSize: '1.5rem', color: '#fff' }}>Dispute & Grievance Redressal Desk</h2>
+            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>Dispute & Grievance Redressal Desk</h2>
           </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
             Transparent ticket resolution for quality disputes, weight discrepancies, and payment delays monitored by Mandi Regulatory Inspectors.
           </p>
         </div>
