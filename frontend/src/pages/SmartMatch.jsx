@@ -81,6 +81,7 @@ export default function SmartMatch({ currentUser }) {
           <div className="glass-card" style={{ color: 'var(--text-muted)' }}>Calculating matches...</div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {matches.map(match => (
               <div key={match.matchId} className="glass-card match-item-card">
                 {/* Farmer / FPO Produce Side */}
                 <div>
