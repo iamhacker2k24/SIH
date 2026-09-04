@@ -1,98 +1,147 @@
-import React from 'react';
-import { Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck, Menu, X, Sparkles, UserCheck, LogIn } from 'lucide-react';
 
-export default function Navbar({ activeTab, setActiveTab, currentUser, setCurrentUser }) {
+export default function Navbar({ activeTab, setActiveTab, currentUser, onOpenAuth }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const navItems = [
-    { id: 'price', label: 'Price Discovery & AI Window', icon: TrendingUp },
-    { id: 'marketplace', label: 'Produce Marketplace', icon: Store },
-    { id: 'match', label: 'Smart Matchmaker', icon: Zap },
-    { id: 'logistics', label: 'Logistics & Storage', icon: Warehouse },
-    { id: 'orders', label: 'Escrow & Contracts', icon: ShieldCheck },
-    { id: 'grievance', label: 'Dispute Desk', icon: ShieldAlert }
+    { id: 'price', label: 'Price Discovery & AI', icon: TrendingUp, tag: 'Live' },
+    { id: 'marketplace', label: 'Produce Market', icon: Store, tag: 'Bidding' },
+    { id: 'match', label: 'Smart Match', icon: Zap, tag: 'AI' },
+    { id: 'logistics', label: 'Storage & Freight', icon: Warehouse, tag: 'WDRA' },
+    { id: 'orders', label: 'Escrow & Pay', icon: ShieldCheck, tag: 'Protected' },
+    { id: 'grievance', label: 'Dispute Desk', icon: ShieldAlert, tag: 'Support' }
   ];
+
+  const handleTabClick = (id) => {
+    setActiveTab(id);
+    setMobileOpen(false);
+  };
 
   return (
     <header style={{
-      background: 'rgba(11, 24, 18, 0.95)',
+      background: 'rgba(7, 18, 13, 0.95)',
       borderBottom: '1px solid var(--border-color)',
       position: 'sticky',
       top: 0,
-      zIndex: 100,
-      backdropFilter: 'blur(10px)'
+      zIndex: 1000,
+      backdropFilter: 'blur(12px)',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
     }}>
       <div style={{
         maxWidth: '1380px',
         margin: '0 auto',
-        padding: '0.85rem 1.5rem',
+        padding: '0.75rem 1.25rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        flexWrap: 'wrap',
         gap: '1rem'
       }}>
-        {/* Logo Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        {/* Cute Brand Logo */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }} onClick={() => setActiveTab('price')}>
           <div style={{
             width: '42px',
             height: '42px',
-            borderRadius: '12px',
-            background: 'linear-gradient(135deg, #10b981 0%, #047857 100%)',
+            borderRadius: '14px',
+            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 0 16px rgba(16, 185, 129, 0.4)'
+            boxShadow: '0 0 18px rgba(16, 185, 129, 0.45)',
+            transform: 'rotate(-2deg)'
           }}>
             <Sprout size={24} color="#ffffff" />
           </div>
           <div>
-            <div style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '-0.03em', color: '#f0fdf4' }}>
-              Krishi<span style={{ color: 'var(--primary)' }}>Link</span> <span style={{ fontSize: '0.75rem', background: 'var(--primary-light)', color: 'var(--primary)', padding: '2px 8px', borderRadius: '12px', border: '1px solid var(--border-glow)' }}>SIH 2026</span>
+            <div style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '-0.03em', color: '#f0fdf4', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              Krishi<span style={{ color: 'var(--primary)' }}>Link</span>
+              <span className="badge badge-green" style={{ fontSize: '0.65rem', padding: '1px 7px' }}>
+                <Sparkles size={10} /> SIH 2026
+              </span>
             </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-              Market Linkages & Dynamic Price Discovery Platform
+            <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+              Market Linkages & Price Discovery Platform
             </div>
           </div>
         </div>
 
-        {/* Navigation Tabs */}
-        <nav className="horizontal-scroll-container" style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.35rem',
-          maxWidth: '100%',
-          paddingBottom: '2px'
-        }}>
+        {/* Desktop Navigation Pills */}
+        <nav className="nav-desktop">
           {navItems.map(item => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  padding: '0.55rem 0.9rem',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '0.825rem',
-                  fontWeight: '600',
-                  border: isActive ? '1px solid var(--primary)' : '1px solid transparent',
-                  background: isActive ? 'var(--primary-light)' : 'transparent',
-                  color: isActive ? 'var(--primary)' : 'var(--text-muted)',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0
-                }}
+                onClick={() => handleTabClick(item.id)}
+                className={`nav-pill-btn ${isActive ? 'nav-pill-btn-active' : 'nav-pill-btn-inactive'}`}
               >
-                <Icon size={16} color={isActive ? 'var(--primary)' : 'var(--text-muted)'} />
+                <Icon size={16} color={isActive ? '#34d399' : 'var(--text-muted)'} />
                 {item.label}
               </button>
             );
           })}
         </nav>
+
+        {/* Prototype Demo & Auth Button */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <button
+            onClick={onOpenAuth}
+            className="btn btn-gold"
+            style={{
+              padding: '0.45rem 0.85rem',
+              fontSize: '0.775rem',
+              borderRadius: 'var(--radius-full)',
+              boxShadow: '0 0 12px rgba(245, 158, 11, 0.3)'
+            }}
+          >
+            <Zap size={14} /> Demo Prototype Logins
+          </button>
+        </div>
+
+        {/* Mobile Hamburger Toggle Button */}
+        <button
+          className="nav-mobile-toggle"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Navigation Drawer */}
+      {mobileOpen && (
+        <div className="nav-mobile-drawer">
+          <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.25rem', paddingLeft: '0.5rem' }}>
+            NAVIGATION MENU:
+          </div>
+          {navItems.map(item => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleTabClick(item.id)}
+                className={`mobile-nav-item ${isActive ? 'mobile-nav-item-active' : 'mobile-nav-item-inactive'}`}
+              >
+                <Icon size={18} color={isActive ? '#34d399' : 'var(--text-muted)'} />
+                <span style={{ flex: 1 }}>{item.label}</span>
+                <span className={`badge ${isActive ? 'badge-green' : 'badge-gold'}`} style={{ fontSize: '0.65rem' }}>
+                  {item.tag}
+                </span>
+              </button>
+            );
+          })}
+
+          <button
+            onClick={() => { setMobileOpen(false); onOpenAuth(); }}
+            className="btn btn-gold"
+            style={{ marginTop: '0.5rem', width: '100%', borderRadius: 'var(--radius-md)' }}
+          >
+            <Zap size={16} /> Open Prototype Quick Logins
+          </button>
+        </div>
+      )}
     </header>
   );
 }

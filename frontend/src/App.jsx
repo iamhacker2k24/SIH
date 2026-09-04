@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import RoleBanner from './components/RoleBanner';
+import AuthModal from './components/AuthModal';
 import PriceDiscovery from './pages/PriceDiscovery';
 import Marketplace from './pages/Marketplace';
 import SmartMatch from './pages/SmartMatch';
@@ -10,6 +11,7 @@ import GrievanceDesk from './pages/GrievanceDesk';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('price');
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     id: 'u-1',
     name: 'Gurpreet Singh (Malwa FPO)',
@@ -23,6 +25,7 @@ export default function App() {
         setActiveTab={setActiveTab}
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
+        onOpenAuth={() => setIsAuthOpen(true)}
       />
 
       <RoleBanner
@@ -38,6 +41,12 @@ export default function App() {
         {activeTab === 'orders' && <OrdersEscrow currentUser={currentUser} />}
         {activeTab === 'grievance' && <GrievanceDesk currentUser={currentUser} />}
       </main>
+
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+        setCurrentUser={setCurrentUser}
+      />
 
       <footer style={{
         borderTop: '1px solid var(--border-color)',

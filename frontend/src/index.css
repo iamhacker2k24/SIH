@@ -1,25 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --bg-dark: #09130e;
-  --bg-card: #112219;
-  --bg-card-hover: #182e22;
-  --bg-glass: rgba(17, 34, 25, 0.85);
-  --border-color: #1e3d2b;
-  --border-glow: rgba(16, 185, 129, 0.3);
+  --bg-dark: #07120d;
+  --bg-card: #0e2017;
+  --bg-card-hover: #152d20;
+  --bg-glass: rgba(14, 32, 23, 0.85);
+  --border-color: #1a3827;
+  --border-glow: rgba(16, 185, 129, 0.35);
   --text-main: #f0fdf4;
   --text-muted: #94a3b8;
   --primary: #10b981;
   --primary-hover: #059669;
-  --primary-light: rgba(16, 185, 129, 0.15);
+  --primary-light: rgba(16, 185, 129, 0.18);
   --accent-gold: #f59e0b;
   --accent-blue: #3b82f6;
   --accent-red: #ef4444;
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --transition: all 0.25s ease-in-out;
+  --accent-pink: #ec4899;
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.25);
+  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -78,38 +85,40 @@ h1, h2, h3, h4 {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 9999px;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .badge-green {
-  background: rgba(16, 185, 129, 0.18);
+  background: rgba(16, 185, 129, 0.2);
   color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  border: 1px solid rgba(16, 185, 129, 0.45);
 }
 
 .badge-gold {
-  background: rgba(245, 158, 11, 0.18);
+  background: rgba(245, 158, 11, 0.2);
   color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.45);
 }
 
 .badge-blue {
-  background: rgba(59, 130, 246, 0.18);
+  background: rgba(59, 130, 246, 0.2);
   color: #60a5fa;
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  border: 1px solid rgba(59, 130, 246, 0.45);
 }
 
 .badge-red {
-  background: rgba(239, 68, 68, 0.18);
+  background: rgba(239, 68, 68, 0.2);
   color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  border: 1px solid rgba(239, 68, 68, 0.45);
 }
 
-/* Glass Card */
+/* Glass Card with cute micro-interactions */
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -121,18 +130,19 @@ h1, h2, h3, h4 {
 
 .glass-card:hover {
   border-color: var(--border-glow);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
 }
 
-/* Buttons */
+/* Cute Pills and Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
   font-size: 0.875rem;
   cursor: pointer;
   border: none;
@@ -144,16 +154,17 @@ h1, h2, h3, h4 {
 .btn-primary {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
 }
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+  transform: translateY(-2px);
 }
 
 .btn-outline {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-main);
   border: 1px solid var(--border-color);
 }
@@ -162,17 +173,19 @@ h1, h2, h3, h4 {
   background: var(--bg-card-hover);
   border-color: var(--primary);
   color: var(--primary);
+  transform: translateY(-1px);
 }
 
 .btn-gold {
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   color: #000;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .btn-gold:hover {
   background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
   color: #fff;
+  transform: translateY(-1px);
 }
 
 /* Inputs & Form Controls */
@@ -185,15 +198,15 @@ h1, h2, h3, h4 {
 
 .form-group label {
   font-size: 0.825rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-muted);
 }
 
 .form-input, .form-select, .form-textarea {
-  background: #09130e;
+  background: #06100c;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 0.65rem 0.85rem;
+  padding: 0.7rem 0.9rem;
   color: var(--text-main);
   font-family: inherit;
   font-size: 0.9rem;
@@ -211,7 +224,7 @@ h1, h2, h3, h4 {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -236,6 +249,112 @@ h1, h2, h3, h4 {
 @keyframes modalIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
+}
+
+/* Navbar Responsiveness & Drawer Animations */
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-mobile-toggle {
+  display: none;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid var(--border-glow);
+  color: var(--primary);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.nav-mobile-drawer {
+  display: none;
+}
+
+@media (max-width: 990px) {
+  .nav-desktop {
+    display: none !important;
+  }
+  .nav-mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-mobile-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem 1.25rem 1.5rem;
+    background: #091710;
+    border-top: 1px solid var(--border-color);
+    animation: drawerDown 0.25s ease-out forwards;
+  }
+}
+
+@keyframes drawerDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cute Navbar Button Style */
+.nav-pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.nav-pill-btn-active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.25) 100%);
+  border: 1px solid var(--primary);
+  color: #34d399;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
+}
+
+.nav-pill-btn-inactive {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  color: var(--text-muted);
+}
+
+.nav-pill-btn-inactive:hover {
+  background: rgba(16, 185, 129, 0.08);
+  color: var(--text-main);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Mobile Drawer Nav Item */
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.mobile-nav-item-active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+  border: 1px solid var(--primary);
+  color: #34d399;
+}
+
+.mobile-nav-item-inactive {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
 }
 
 /* Grid Layouts */
@@ -282,7 +401,7 @@ h1, h2, h3, h4 {
   height: 4px;
 }
 
-/* Mobile Responsiveness Media Queries */
+/* Mobile Media Queries */
 @media (max-width: 900px) {
   .price-discovery-grid {
     grid-template-columns: 1fr;
@@ -315,24 +434,7 @@ h1, h2, h3, h4 {
     max-height: 95vh;
   }
 
-  .form-grid-2col {
-    grid-template-columns: 1fr !important;
-  }
-
   .btn {
     width: 100%;
-  }
-
-  .badge {
-    font-size: 0.7rem;
-  }
-}
-
-@media (max-width: 480px) {
-  h2 {
-    font-size: 1.25rem !important;
-  }
-  h3 {
-    font-size: 1.1rem !important;
   }
 }
