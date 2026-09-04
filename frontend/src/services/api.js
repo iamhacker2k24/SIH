@@ -29,6 +29,16 @@ export const api = {
     return res.json();
   },
 
+  // AI Advisor
+  async getAiAdvisory(payload) {
+    const res = await fetch(`${API_BASE_URL}/ai/advisor`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    return res.json();
+  },
+
   // Mandi Prices & Recommendations
   async getMandiPrices(filters = {}) {
     const query = new URLSearchParams(filters).toString();

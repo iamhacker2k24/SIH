@@ -102,16 +102,20 @@ export default function AuthModal({ isOpen, onClose, setCurrentUser }) {
 
         {/* 1-Click Prototype Demo Accounts */}
         <div style={{
-          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%)',
-          border: '1px solid var(--border-glow)',
-          padding: '1rem',
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%)',
+          border: '2px solid var(--primary)',
+          padding: '1.15rem',
           borderRadius: 'var(--radius-md)',
-          marginBottom: '1.25rem'
+          marginBottom: '1.25rem',
+          boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)'
         }}>
-          <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-            <Zap size={14} /> SIH 2026 PROTOTYPE DEMO: ONE-CLICK QUICK LOGINS
+          <div style={{ fontSize: '0.875rem', fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+            <Zap size={16} /> QUICK DEMO PROTOTYPE ACCESS (FOR PRESENTATION & SPEECH)
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '0.5rem' }}>
+          <div style={{ fontSize: '0.775rem', color: 'var(--text-muted)', marginBottom: '0.75rem' }}>
+            Select a live persona to immediately enter and demonstrate the KrishiLink ecosystem:
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(115px, 1fr))', gap: '0.5rem' }}>
             {quickDemoAccounts.map(acc => (
               <button
                 key={acc.id}

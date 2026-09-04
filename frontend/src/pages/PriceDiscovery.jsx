@@ -3,12 +3,16 @@ import { TrendingUp, Calendar, AlertCircle, Sparkles, Filter, RefreshCw, ArrowUp
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { api } from '../services/api';
 
-export default function PriceDiscovery() {
+export default function PriceDiscovery({ selectedState }) {
   const [prices, setPrices] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchCommodity, setSearchCommodity] = useState('');
-  const [stateFilter, setStateFilter] = useState('');
+  const [stateFilter, setStateFilter] = useState(selectedState || '');
+
+  useEffect(() => {
+    setStateFilter(selectedState || '');
+  }, [selectedState]);
 
   useEffect(() => {
     fetchPrices();

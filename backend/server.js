@@ -24,6 +24,7 @@ app.use('/api/match', require('./routes/matchRoutes'));
 app.use('/api/logistics', require('./routes/logisticsRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes'));
 app.use('/api/grievance', require('./routes/grievanceRoutes'));
+app.use('/api/ai', require('./routes/aiRoutes'));
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
