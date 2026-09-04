@@ -1,0 +1,21 @@
+{
+  "name": "agrimarket-backend",
+  "version": "1.0.0",
+  "description": "Backend service for SIH Market Linkages and Price Discovery for Farmers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed": "node utils/seedData.js"
+  },
+  "keywords": ["sih", "agriculture", "mandi", "farmers", "price-discovery", "express", "mongoose"],
+  "author": "Antigravity SIH Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.1"
+  }
+}
