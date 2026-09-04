@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck,
-  Globe, MapPin, UserCheck, Users, Building2, ChevronDown
+  Globe, MapPin, UserCheck, Users, Building2, ChevronDown, Menu, X
 } from 'lucide-react';
 
 export default function Navbar({
@@ -15,6 +15,7 @@ export default function Navbar({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const indianStates = [
     'All India', 'Punjab', 'Haryana', 'Uttar Pradesh', 'Madhya Pradesh',
@@ -47,6 +48,11 @@ export default function Navbar({
     ...(currentUser?.role === 'Admin' ? [{ path: '/admin', label: 'Admin', icon: Users }] : [])
   ];
 
+  const handleNavClick = (path) => {
+    navigate(path);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header style={{
       background: 'rgba(7, 18, 13, 0.95)',
@@ -57,7 +63,7 @@ export default function Navbar({
       backdropFilter: 'blur(12px)',
       boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
     }}>
-      {/* Single Ultra-Compact Header Bar */}
+      {/* Top Header Container */}
       <div style={{
         maxWidth: '1440px',
         margin: '0 auto',
@@ -65,10 +71,10 @@ export default function Navbar({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: '0.6rem'
+        gap: '0.5rem'
       }}>
         {/* Brand Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', flexShrink: 0 }} onClick={() => navigate('/')}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', flexShrink: 0 }} onClick={() => handleNavClick('/')}>
           <div style={{
             width: '28px',
             height: '28px',
@@ -89,22 +95,15 @@ export default function Navbar({
           </div>
         </div>
 
-        {/* Center Navigation Links (Inline Single Line) */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.2rem',
-          overflowX: 'auto',
-          whiteSpace: 'nowrap',
-          padding: '0.1rem 0'
-        }}>
+        {/* Desktop Navigation Links */}
+        <div className="nav-desktop">
           {navItems.map(item => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
               <button
                 key={item.path}
-                onClick={() => navigate(item.path)}
+                onClick={() => handleNavClick(item.path)}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -128,8 +127,8 @@ export default function Navbar({
           })}
         </div>
 
-        {/* Global Selectors & Profile Button (Zero Gap Design) */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
+        {/* Global Selectors & Profile Button (Desktop) */}
+        <div className="nav-desktop-controls">
           {/* State Selector */}
           <div style={{
             display: 'flex',
@@ -222,7 +221,110 @@ export default function Navbar({
             <span>{currentUser?.name ? currentUser.name.split(' ')[0] : 'Login'}</span>
           </button>
         </div>
+
+        {/* Mobile Toggle Button */}
+        <button
+          className="nav-mobile-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle Navigation Menu"
+        >
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="nav-mobile-drawer">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
+            {/* Mobile State Selector */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.3rem',
+              background: 'rgba(255, 255, 255, 0.06)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '10px',
+              padding: '0.4rem 0.6rem'
+            }}>
+              <MapPin size={14} color="var(--primary)" />
+              <select
+                value={selectedState}
+                onChange={(e) => setSelectedState(e.target.value)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '0.8rem',
+                  outline: 'none',
+                  width: '100%'
+                }}
+              >
+                <option value="" style={{ background: '#0a1f16', color: '#fff' }}>Select State</option>
+                {indianStates.map(state => (
+                  <option key={state} value={state} style={{ background: '#0a1f16', color: '#fff' }}>{state}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Mobile Language Selector */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.3rem',
+              background: 'rgba(255, 255, 255, 0.06)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '10px',
+              padding: '0.4rem 0.6rem'
+            }}>
+              <Globe size={14} color="var(--accent-gold)" />
+              <select
+                value={selectedLanguage}
+                onChange={(e) => setSelectedLanguage(e.target.value)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '0.8rem',
+                  outline: 'none',
+                  width: '100%'
+                }}
+              >
+                {languages.map(lang => (
+                  <option key={lang.code} value={lang.code} style={{ background: '#0a1f16', color: '#fff' }}>{lang.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Links Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.4rem' }}>
+            {navItems.map(item => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              return (
+                <button
+                  key={item.path}
+                  onClick={() => handleNavClick(item.path)}
+                  className={`mobile-nav-item ${isActive ? 'mobile-nav-item-active' : 'mobile-nav-item-inactive'}`}
+                >
+                  <Icon size={16} />
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Mobile Profile Button */}
+          <button
+            onClick={() => { onOpenAuth(); setMobileMenuOpen(false); }}
+            className="btn btn-primary"
+            style={{ marginTop: '0.5rem', width: '100%' }}
+          >
+            <UserCheck size={16} />
+            <span>{currentUser?.name ? `Account (${currentUser.name})` : 'Login / Register'}</span>
+          </button>
+        </div>
+      )}
     </header>
   );
 }
