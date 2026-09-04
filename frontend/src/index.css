@@ -35,12 +35,13 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
@@ -137,6 +138,7 @@ h1, h2, h3, h4 {
   border: none;
   transition: var(--transition);
   font-family: inherit;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -197,6 +199,7 @@ h1, h2, h3, h4 {
   font-size: 0.9rem;
   outline: none;
   transition: var(--transition);
+  width: 100%;
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
@@ -208,8 +211,8 @@ h1, h2, h3, h4 {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,7 +226,7 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-lg);
   max-width: 650px;
   width: 100%;
-  padding: 2rem;
+  padding: 1.75rem;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: var(--shadow-lg);
@@ -238,18 +241,98 @@ h1, h2, h3, h4 {
 /* Grid Layouts */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.25rem;
 }
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
 }
 
 .grid-4 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.25rem;
+}
+
+.price-discovery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 1.5rem;
+}
+
+.match-item-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.3fr 1.2fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+/* Mobile Responsiveness Media Queries */
+@media (max-width: 900px) {
+  .price-discovery-grid {
+    grid-template-columns: 1fr;
+  }
+  .match-item-card {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .match-item-card > div {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem 0.75rem;
+  }
+
+  .glass-card {
+    padding: 1.15rem;
+  }
+
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .modal-content {
+    padding: 1.25rem;
+    max-height: 95vh;
+  }
+
+  .form-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.25rem !important;
+  }
+  h3 {
+    font-size: 1.1rem !important;
+  }
 }

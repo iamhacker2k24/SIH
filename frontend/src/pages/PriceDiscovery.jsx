@@ -102,7 +102,7 @@ export default function PriceDiscovery() {
       </div>
 
       {/* Main Grid: Live Cards & Detailed Chart */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.35fr', gap: '1.5rem' }}>
+      <div className="price-discovery-grid">
         {/* Left Column: Price Cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <h3 style={{ fontSize: '1.1rem', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -177,7 +177,7 @@ export default function PriceDiscovery() {
                 {selectedItem.recommendation?.reasoning}
               </div>
 
-              <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1rem', background: 'rgba(0,0,0,0.25)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '1rem', background: 'rgba(0,0,0,0.25)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
                 <div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Optimal Action</div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--primary)' }}>

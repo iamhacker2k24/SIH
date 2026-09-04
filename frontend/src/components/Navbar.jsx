@@ -55,7 +55,13 @@ export default function Navbar({ activeTab, setActiveTab, currentUser, setCurren
         </div>
 
         {/* Navigation Tabs */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+        <nav className="horizontal-scroll-container" style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.35rem',
+          maxWidth: '100%',
+          paddingBottom: '2px'
+        }}>
           {navItems.map(item => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -75,7 +81,9 @@ export default function Navbar({ activeTab, setActiveTab, currentUser, setCurren
                   background: isActive ? 'var(--primary-light)' : 'transparent',
                   color: isActive ? 'var(--primary)' : 'var(--text-muted)',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
                 }}
               >
                 <Icon size={16} color={isActive ? 'var(--primary)' : 'var(--text-muted)'} />

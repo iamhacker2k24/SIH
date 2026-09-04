@@ -81,8 +81,7 @@ export default function SmartMatch({ currentUser }) {
           <div className="glass-card" style={{ color: 'var(--text-muted)' }}>Calculating matches...</div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {matches.map(match => (
-              <div key={match.matchId} className="glass-card" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.3fr 1.2fr 1fr', gap: '1rem', alignItems: 'center' }}>
+              <div key={match.matchId} className="glass-card match-item-card">
                 {/* Farmer / FPO Produce Side */}
                 <div>
                   <div className="badge badge-gold" style={{ marginBottom: '0.35rem' }}>Produce Seller Lot</div>

@@ -31,7 +31,7 @@ export default function RoleBanner({ currentUser, setCurrentUser }) {
           <span>(Click a role to test specific user workflows)</span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <div className="horizontal-scroll-container" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', maxWidth: '100%' }}>
           {roles.map(r => {
             const Icon = r.icon;
             const isSelected = currentUser.role === r.id;
@@ -51,7 +51,9 @@ export default function RoleBanner({ currentUser, setCurrentUser }) {
                   background: isSelected ? 'var(--primary-light)' : 'rgba(255, 255, 255, 0.03)',
                   color: isSelected ? '#34d399' : 'var(--text-muted)',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
                 }}
               >
                 <Icon size={14} color={isSelected ? '#34d399' : 'var(--text-muted)'} />
