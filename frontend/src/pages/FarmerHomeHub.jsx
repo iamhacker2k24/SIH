@@ -14,7 +14,7 @@ export default function FarmerHomeHub({ currentUser, selectedState }) {
   const rectCards = [
     {
       id: 'sell',
-      title: 'Sell Produce',
+      title: 'Sell Product',
       subtitle: 'Post harvested crop & set your desire asking price',
       icon: Store,
       color: '#10b981',
