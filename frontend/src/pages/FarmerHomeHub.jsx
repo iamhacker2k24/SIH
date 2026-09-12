@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   TrendingUp, Store, MapPin, Warehouse, ShieldAlert, Landmark,
-  CreditCard, Sparkles, Sprout, ChevronRight
+  CreditCard, Sparkles, Sprout, ChevronRight, Truck
 } from 'lucide-react';
 import CreateLotModal from '../components/CreateLotModal';
 import { useLanguage } from '../context/LanguageContext';
@@ -65,14 +65,14 @@ export default function FarmerHomeHub({ currentUser, selectedState }) {
       tag: t('card_loan_tag', '4% KCC Credit')
     },
     {
-      id: 'rates',
-      title: t('card_rates_title', 'Live Commodity Rates'),
-      subtitle: t('card_rates_sub', 'Detailed commodity rate charts & historical 30-day trends'),
-      icon: Sprout,
+      id: 'transport',
+      title: t('card_transport_title', 'Transportation & Logistics'),
+      subtitle: t('card_transport_sub', 'Book mini trucks, tractors & live GPS fleet tracking to Mandi'),
+      icon: Truck,
       color: '#14b8a6',
       bgGradient: 'linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, rgba(13, 148, 136, 0.05) 100%)',
-      action: () => navigate('/price'),
-      tag: t('card_rates_tag', '30-Day Trends')
+      action: () => navigate('/logistics'),
+      tag: t('card_transport_tag', 'Vehicle Booking & GPS')
     },
     {
       id: 'storage',

@@ -8,9 +8,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      /* Completely hide Google Translate UI/Banner/Floater - Runs 100% invisibly in the background */
+      html, body {
+        top: 0px !important;
+        position: static !important;
+        margin-top: 0px !important;
+      }
+      .goog-te-banner-frame,
+      .goog-te-banner-frame.skiptranslate,
+      iframe.goog-te-banner-frame,
+      iframe.skiptranslate,
+      body > .skiptranslate,
+      #goog-gt-tt,
+      .goog-te-gadget,
+      .goog-tooltip,
+      .VIpgJd-ZVi9I-aZ2wEe-wOHMyf,
+      .VIpgJd-ZVi9I-OR9Gae-sztScan-monit,
+      .VIpgJd-ZVi9I-aZ2wEe-wOHMyf-ti6hGc,
+      .VIpgJd-yAWNEb-hvhgNd,
+      .VIpgJd-yAWNEb-L7lbkb {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0px !important;
+        width: 0px !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+        z-index: -9999 !important;
+      }
+      .goog-text-highlight {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+    </style>
   </head>
   <body>
+    <div id="google_translate_element" style="display:none; position:absolute; top:-9999px; left:-9999px;"></div>
     <div id="root"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        if (window.google && window.google.translate) {
+          new window.google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi,pa,gu,mr,te,ta,bn',
+            autoDisplay: false,
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          }, 'google_translate_element');
+        }
+      }
+
+      // Continuous watchdog to prevent Google Translate from shifting the body down or showing banners
+      function keepGoogleInvisible() {
+        if (document.body) {
+          if (document.body.style.top && document.body.style.top !== '0px') {
+            document.body.style.top = '0px';
+          }
+          if (document.body.style.position && document.body.style.position !== 'static') {
+            document.body.style.position = 'static';
+          }
+        }
+        var badNodes = document.querySelectorAll('iframe.skiptranslate, .goog-te-banner-frame, body > .skiptranslate');
+        for (var i = 0; i < badNodes.length; i++) {
+          badNodes[i].style.display = 'none';
+          badNodes[i].style.visibility = 'hidden';
+          badNodes[i].style.height = '0px';
+          badNodes[i].style.position = 'absolute';
+          badNodes[i].style.top = '-9999px';
+        }
+      }
+      setInterval(keepGoogleInvisible, 60);
+      window.addEventListener('DOMContentLoaded', keepGoogleInvisible);
+      window.addEventListener('load', keepGoogleInvisible);
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

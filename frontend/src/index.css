@@ -629,3 +629,40 @@ h1, h2, h3, h4 {
   }
 }
 
+/* Google Translate Clean Integration - Hide Frames, Banners & Floating Toolbars */
+html, body {
+  top: 0px !important;
+  position: static !important;
+  margin-top: 0px !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe.skiptranslate,
+body > .skiptranslate,
+#goog-gt-tt,
+.goog-te-gadget,
+.goog-tooltip,
+.VIpgJd-ZVi9I-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9I-OR9Gae-sztScan-monit,
+.VIpgJd-ZVi9I-aZ2wEe-wOHMyf-ti6hGc,
+.VIpgJd-yAWNEb-hvhgNd,
+.VIpgJd-yAWNEb-L7lbkb {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0px !important;
+  width: 0px !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  z-index: -9999 !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+

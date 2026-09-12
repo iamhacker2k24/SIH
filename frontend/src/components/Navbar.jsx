@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Sprout, TrendingUp, Store, Zap, Warehouse, ShieldAlert, ShieldCheck,
-  Globe, MapPin, UserCheck, Users, Building2, ChevronDown, Menu, X, Sun, Moon
+  Globe, MapPin, UserCheck, Users, Building2, ChevronDown, Menu, X, Sun, Moon, Truck
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
@@ -42,10 +42,10 @@ export default function Navbar({
     { path: '/buyer', label: t('nav_buyer', 'Buyer'), icon: Building2 },
     { path: '/fpo', label: t('nav_fpo', 'FPO Hub'), icon: Users },
     { path: '/match', label: t('nav_match', 'Match'), icon: Zap },
-    { path: '/logistics', label: t('nav_logistics', 'Logistics'), icon: Warehouse },
+    { path: '/logistics', label: t('nav_logistics', 'Logistics & Transport'), icon: Truck },
     { path: '/orders', label: t('nav_orders', 'Escrow'), icon: ShieldCheck },
     { path: '/grievance', label: t('nav_support', 'Support'), icon: ShieldAlert },
-    ...(currentUser?.role === 'Admin' ? [{ path: '/admin', label: t('nav_admin', 'Admin'), icon: Users }] : [])
+    { path: '/admin', label: t('nav_admin', 'Admin'), icon: ShieldCheck }
   ];
 
   const handleNavClick = (path) => {

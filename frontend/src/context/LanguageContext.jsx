@@ -20,7 +20,7 @@ export const TRANSLATIONS = {
     nav_buyer: 'Buyer',
     nav_fpo: 'FPO Hub',
     nav_match: 'Match',
-    nav_logistics: 'Logistics',
+    nav_logistics: 'Logistics & Transport',
     nav_orders: 'Escrow',
     nav_support: 'Support',
     nav_admin: 'Admin',
@@ -66,9 +66,13 @@ export const TRANSLATIONS = {
     card_loan_sub: 'Low-interest 4% Kisan Credit Line & instant loan approval',
     card_loan_tag: '4% KCC Credit',
 
-    card_rates_title: 'Live Commodity Rates',
-    card_rates_sub: 'Detailed commodity rate charts & historical 30-day trends',
-    card_rates_tag: '30-Day Trends',
+    card_transport_title: 'Transportation & Logistics',
+    card_transport_sub: 'Book mini trucks, tractors & live GPS fleet tracking to Mandi',
+    card_transport_tag: 'Vehicle Booking & GPS',
+
+    card_rates_title: 'Transportation & Logistics',
+    card_rates_sub: 'Book mini trucks, tractors & live GPS fleet tracking to Mandi',
+    card_rates_tag: 'Vehicle Booking & GPS',
 
     card_storage_title: 'Book Cold Storage',
     card_storage_sub: 'WDRA certified warehouses & climate control chambers',
@@ -143,11 +147,15 @@ export const TRANSLATIONS = {
     create_contract: 'Draft Direct Contract',
 
     // Logistics & Storage
-    logistics_title: 'Cold Storage & Agri Freight Booking',
-    logistics_sub: 'WDRA-certified cold storage facilities, climate-controlled chambers, and reliable farm-to-mandi transport.',
+    logistics_title: 'Transportation, Live GPS Tracking & Logistics Hub',
+    logistics_sub: 'Book commercial vehicles, mini trucks & tractors for Mandi transit, track active dispatches with live GPS, and reserve WDRA cold storage.',
     book_storage: 'Book Cold Storage',
-    book_transport: 'Book Transport Truck',
+    book_transport: 'Book Transport Vehicle',
     available_capacity: 'Available Capacity',
+    tab_book_vehicle: '🚚 Book Vehicle & Freight',
+    tab_live_tracking: '📍 Live GPS Fleet Tracking',
+    tab_fleet_management: '📋 My Dispatches',
+    tab_cold_storage: '🏢 Cold Storage & Warehouses',
 
     // Orders & Escrow
     orders_title: 'Escrow Protected Orders & Contracts',
@@ -200,7 +208,7 @@ export const TRANSLATIONS = {
     nav_buyer: 'खरीदार',
     nav_fpo: 'FPO केंद्र',
     nav_match: 'स्मार्ट मैच',
-    nav_logistics: 'लॉजिस्टिक्स',
+    nav_logistics: 'परिवहन व लॉजिस्टिक्स',
     nav_orders: 'एस्क्रो/ऑर्डर',
     nav_support: 'सहायता',
     nav_admin: 'एडमिन',
@@ -246,9 +254,13 @@ export const TRANSLATIONS = {
     card_loan_sub: 'कम ब्याज 4% किसान क्रेडिट लाइन और त्वरित ऋण स्वीकृति',
     card_loan_tag: '4% केसीसी क्रेडिट',
 
-    card_rates_title: 'लाइव फसल दरें',
-    card_rates_sub: 'विस्तृत फसल दर चार्ट और 30-दिवसीय ऐतिहासिक रुझान',
-    card_rates_tag: '30-दिवसीय रुझान',
+    card_transport_title: 'परिवहन एवं लॉजिस्टिक्स',
+    card_transport_sub: 'मिनी ट्रक, ट्रैक्टर ट्रॉली बुक करें और लाइव जीपीएस फ्लीट ट्रैकिंग पाएं',
+    card_transport_tag: 'वाहन बुकिंग व ट्रैकिंग',
+
+    card_rates_title: 'परिवहन एवं लॉजिस्टिक्स',
+    card_rates_sub: 'मिनी ट्रक, ट्रैक्टर ट्रॉली बुक करें और लाइव जीपीएस फ्लीट ट्रैकिंग पाएं',
+    card_rates_tag: 'वाहन बुकिंग व ट्रैकिंग',
 
     card_storage_title: 'कोल्ड स्टोरेज बुक करें',
     card_storage_sub: 'डब्लूडीआरए प्रमाणित गोदाम और नियंत्रित तापमान कक्ष',
@@ -323,11 +335,15 @@ export const TRANSLATIONS = {
     create_contract: 'सीधा अनुबंध बनाएं',
 
     // Logistics & Storage
-    logistics_title: 'कोल्ड स्टोरेज एवं कृषि ढुलाई बुकिंग',
-    logistics_sub: 'डब्लूडीआरए प्रमाणित शीतगृह, वातानुकूलित चैंबर और सुरक्षित खेत-से-मंडी परिवहन।',
+    logistics_title: 'कृषि परिवहन, फ्लीट ट्रैकिंग एवं कोल्ड स्टोरेज',
+    logistics_sub: 'मंडी परिवहन के लिए मिनी ट्रक, पिकअप, ट्रैक्टर बुक करें, लाइव जीपीएस से ट्रैक करें या कोल्ड स्टोरेज आरक्षित करें।',
     book_storage: 'कोल्ड स्टोरेज बुक करें',
-    book_transport: 'परिवहन ट्रक बुक करें',
+    book_transport: 'वाहन बुक करें',
     available_capacity: 'उपलब्ध क्षमता',
+    tab_book_vehicle: '🚚 वाहन व ढुलाई बुक करें',
+    tab_live_tracking: '📍 लाइव जीपीएस ट्रैकिंग',
+    tab_fleet_management: '📋 मेरे प्रेषण (Dispatches)',
+    tab_cold_storage: '🏢 कोल्ड स्टोरेज व गोदाम',
 
     // Orders & Escrow
     orders_title: 'एस्क्रो सुरक्षित ऑर्डर एवं अनुबंध',
@@ -1357,6 +1373,598 @@ export const TRANSLATIONS = {
   }
 };
 
+export const ISO_LANG_MAP = {
+  English: 'en',
+  Hindi: 'hi',
+  Punjabi: 'pa',
+  Gujarati: 'gu',
+  Marathi: 'mr',
+  Telugu: 'te',
+  Tamil: 'ta',
+  Bengali: 'bn'
+};
+
+export const COMMON_UI_TRANSLATIONS = {
+  Hindi: {
+    'Search': 'खोजें',
+    'Filter': 'फ़िल्टर',
+    'Refresh': 'ताज़ा करें',
+    'Loading...': 'लोड हो रहा है...',
+    'Confirm': 'पुष्टि करें',
+    'Cancel': 'रद्द करें',
+    'Close': 'बंद करें',
+    'Submit': 'जमा करें',
+    'Apply': 'लागू करें',
+    'Actions': 'कार्रवाई',
+    'View Details': 'विवरण देखें',
+    'Download': 'डाउनलोड',
+    'Print': 'प्रिंट करें',
+    'Status': 'स्थिति',
+    'All': 'सभी',
+    'All Facilities': 'सभी सुविधाएं',
+    'All Warehouses': 'सभी गोदाम',
+    'All India': 'सम्पूर्ण भारत',
+    'State': 'राज्य',
+    'Language': 'भाषा',
+    'Light Mode': 'लाइट मोड',
+    'Dark Mode': 'डार्क मोड',
+    'Toggle Theme': 'थीम बदलें',
+    'Book Transport Now': 'परिवहन अभी बुक करें',
+    'Track Shipment': 'शिपमेंट ट्रैक करें',
+    'Call Driver Now': 'चालक को कॉल करें',
+    'Print / Download Freight Bilty': 'बिल्टी प्रिंट / डाउनलोड करें',
+    'Print Bilty': 'बिल्टी प्रिंट करें',
+    'Track Live': 'लाइव ट्रैक करें',
+    'Track Live GPS': 'लाइव जीपीएस ट्रैक करें',
+    'Book New Vehicle': 'नया वाहन बुक करें',
+    'Reserve Storage Chamber': 'भंडारण कक्ष आरक्षित करें',
+    'Reserve Storage Capacity': 'भंडारण क्षमता आरक्षित करें',
+    'Open Directions in Google Maps': 'गूगल मैप्स में दिशा-निर्देश देखें',
+    'Sort by Nearest GPS': 'निकटतम जीपीएस के अनुसार क्रमबद्ध करें',
+    'Use My GPS Location': 'मेरे जीपीएस स्थान का उपयोग करें',
+    'Selected for Booking': 'बुकिंग के लिए चयनित',
+    'Select Vehicle': 'वाहन चुनें',
+    'Estimated Trip Fare': 'अनुमानित यात्रा किराया',
+    'Pickup Location (Farm Gate / Village)': 'पिकअप स्थान (खेत गेट / गांव)',
+    'Destination APMC Mandi / Buyer Depot': 'गंतव्य एपीएमसी मंडी / डिपो',
+    'Cargo Commodity': 'फसल / उत्पाद',
+    'Weight (Quintals)': 'वजन (क्विंटल)',
+    'Estimated Transit Distance (km)': 'अनुमानित पारगमन दूरी (किमी)',
+    'Pickup Date': 'पिकअप तिथि',
+    'Preferred Time Slot': 'पसंदीदा समय स्लॉट',
+    'Contact Phone': 'संपर्क फोन',
+    'Special Driver Instructions (Optional)': 'चालक के लिए विशेष निर्देश (वैकल्पिक)',
+    'Confirm Transport & Dispatch Driver': 'परिवहन की पुष्टि करें और चालक भेजें',
+    'Current Speed': 'वर्तमान गति',
+    'Remaining': 'शेष दूरी',
+    'ETA to Mandi': 'मंडी पहुंचने का समय',
+    'Cargo Condition': 'फसल स्थिति',
+    'Mandi Gate Pass OTP': 'मंडी गेट पास ओटीपी',
+    'Transit Checkpoints & Milestones': 'पारगमन चेकपॉइंट एवं मील के पत्थर',
+    'Assigned Driver & Hauler Profile': 'सौंपा गया चालक व वाहन प्रोफ़ाइल',
+    'Fast-Track Mandi Ingate Clearance': 'मंडी प्रवेश द्वार पर त्वरित निकासी',
+    'My Consignments & Logistics Management': 'मेरे प्रेषण एवं लॉजिस्टिक्स प्रबंधन',
+    'Transport Booked Successfully!': 'परिवहन सफलतापूर्वक बुक हो गया!',
+    'Capacity Reserved Successfully!': 'क्षमता सफलतापूर्वक आरक्षित!',
+    'Sell Product': 'उत्पाद बेचें',
+    'Check Live Price': 'लाइव भाव देखें',
+    'Find Nearest Mandi': 'निकटतम मंडी खोजें',
+    'Government Schemes': 'सरकारी योजनाएं',
+    'Take Agri Loan': 'कृषि ऋण लें',
+    'Transportation & Logistics': 'परिवहन एवं लॉजिस्टिक्स',
+    'Book Cold Storage': 'कोल्ड स्टोरेज बुक करें',
+    'Support & Dispute': 'सहायता एवं विवाद निवारण',
+    'Open Page': 'पेज खोलें',
+    'Click any card to open page': 'पेज खोलने के लिए किसी भी कार्ड पर क्लिक करें',
+    'Krishi Services Hub': 'कृषि सेवा केंद्र'
+  },
+  Punjabi: {
+    'Search': 'ਖੋਜੋ',
+    'Filter': 'ਫਿਲਟਰ',
+    'Refresh': 'ਤਾਜ਼ਾ ਕਰੋ',
+    'Loading...': 'ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...',
+    'Confirm': 'ਪੁਸ਼ਟੀ ਕਰੋ',
+    'Cancel': 'ਰੱਦ ਕਰੋ',
+    'Close': 'ਬੰਦ ਕਰੋ',
+    'Submit': 'ਜਮ੍ਹਾਂ ਕਰੋ',
+    'Apply': 'ਲਾਗੂ ਕਰੋ',
+    'Actions': 'ਕਾਰਵਾਈਆਂ',
+    'View Details': 'ਵੇਰਵੇ ਵੇਖੋ',
+    'Download': 'ਡਾਊਨਲੋਡ',
+    'Print': 'ਪ੍ਰਿੰਟ ਕਰੋ',
+    'Status': 'ਸਥਿਤੀ',
+    'All': 'ਸਾਰੇ',
+    'All Facilities': 'ਸਾਰੀਆਂ ਸਹੂਲਤਾਂ',
+    'All Warehouses': 'ਸਾਰੇ ਗੋਦਾਮ',
+    'All India': 'ਸਾਰਾ ਭਾਰਤ',
+    'State': 'ਰਾਜ',
+    'Language': 'ਭਾਸ਼ਾ',
+    'Light Mode': 'ਲਾਈਟ ਮੋਡ',
+    'Dark Mode': 'ਡਾਰਕ ਮੋਡ',
+    'Toggle Theme': 'ਥੀਮ ਬਦਲੋ',
+    'Book Transport Now': 'ਆਵਾਜਾਈ ਹੁਣੇ ਬੁੱਕ ਕਰੋ',
+    'Track Shipment': 'ਸ਼ਿਪਮੈਂਟ ਟਰੈਕ ਕਰੋ',
+    'Call Driver Now': 'ਡਰਾਈਵਰ ਨੂੰ ਕਾਲ ਕਰੋ',
+    'Print / Download Freight Bilty': 'ਬਿਲਟੀ ਪ੍ਰਿੰਟ / ਡਾਊਨਲੋਡ ਕਰੋ',
+    'Print Bilty': 'ਬਿਲਟੀ ਪ੍ਰਿੰਟ ਕਰੋ',
+    'Track Live': 'ਲਾਈਵ ਟਰੈਕ ਕਰੋ',
+    'Track Live GPS': 'ਲਾਈਵ ਜੀਪੀਐਸ ਟਰੈਕ ਕਰੋ',
+    'Book New Vehicle': 'ਨਵਾਂ ਵਾਹਨ ਬੁੱਕ ਕਰੋ',
+    'Reserve Storage Chamber': 'ਸਟੋਰੇਜ ਚੈਂਬਰ ਰਿਜ਼ਰਵ ਕਰੋ',
+    'Reserve Storage Capacity': 'ਸਟੋਰੇਜ ਸਮਰੱਥਾ ਰਿਜ਼ਰਵ ਕਰੋ',
+    'Open Directions in Google Maps': 'ਗੂਗਲ ਮੈਪਸ ਵਿੱਚ ਦਿਸ਼ਾਵਾਂ ਵੇਖੋ',
+    'Sort by Nearest GPS': 'ਨੇੜਲੇ ਜੀਪੀਐਸ ਅਨੁਸਾਰ ਕ੍ਰਮਬੱਧ ਕਰੋ',
+    'Use My GPS Location': 'ਮੇਰੇ ਜੀਪੀਐਸ ਸਥਾਨ ਦੀ ਵਰਤੋਂ ਕਰੋ',
+    'Selected for Booking': 'ਬੁਕਿੰਗ ਲਈ ਚੁਣਿਆ ਗਿਆ',
+    'Select Vehicle': 'ਵਾਹਨ ਚੁਣੋ',
+    'Estimated Trip Fare': 'ਅੰਦਾਜ਼ਨ ਕਿਰਾਇਆ',
+    'Pickup Location (Farm Gate / Village)': 'ਪਿਕਅੱਪ ਸਥਾਨ (ਖੇਤ ਗੇਟ / ਪਿੰਡ)',
+    'Destination APMC Mandi / Buyer Depot': 'ਮੰਜ਼ਿਲ ਏਪੀਐਮਸੀ ਮੰਡੀ / ਡਿਪੋ',
+    'Cargo Commodity': 'ਫਸਲ / ਵਸਤੂ',
+    'Weight (Quintals)': 'ਭਾਰ (ਕੁਇੰਟਲ)',
+    'Estimated Transit Distance (km)': 'ਅੰਦਾਜ਼ਨ ਦੂਰੀ (ਕਿਮੀ)',
+    'Pickup Date': 'ਪਿਕਅੱਪ ਮਿਤੀ',
+    'Preferred Time Slot': 'ਪਸੰਦੀਦਾ ਸਮਾਂ ਸਲਾਟ',
+    'Contact Phone': 'ਸੰਪਰਕ ਫੋਨ',
+    'Special Driver Instructions (Optional)': 'ਡਰਾਈਵਰ ਲਈ ਵਿਸ਼ੇਸ਼ ਨਿਰਦੇਸ਼ (ਵਿਕਲਪਿਕ)',
+    'Confirm Transport & Dispatch Driver': 'ਆਵਾਜਾਈ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ ਅਤੇ ਡਰਾਈਵਰ ਭੇਜੋ',
+    'Current Speed': 'ਮੌਜੂਦਾ ਗਤੀ',
+    'Remaining': 'ਬਾਕੀ',
+    'ETA to Mandi': 'ਮੰਡੀ ਪਹੁੰਚਣ ਦਾ ਸਮਾਂ',
+    'Cargo Condition': 'ਮਾਲ ਦੀ ਸਥਿਤੀ',
+    'Mandi Gate Pass OTP': 'ਮੰਡੀ ਗੇਟ ਪਾਸ ਓਟੀਪੀ',
+    'Transit Checkpoints & Milestones': 'ਰਸਤੇ ਦੇ ਚੈੱਕਪੁਆਇੰਟ',
+    'Assigned Driver & Hauler Profile': 'ਡਰਾਈਵਰ ਪ੍ਰੋਫਾਈਲ',
+    'Fast-Track Mandi Ingate Clearance': 'ਮੰਡੀ ਗੇਟ ਤੁਰੰਤ ਦਾਖਲਾ',
+    'My Consignments & Logistics Management': 'ਮੇਰੀਆਂ ਬੁਕਿੰਗਾਂ ਅਤੇ ਲੌਜਿਸਟਿਕਸ',
+    'Transport Booked Successfully!': 'ਆਵਾਜਾਈ ਸਫਲਤਾਪੂਰਵਕ ਬੁੱਕ ਹੋਈ!',
+    'Capacity Reserved Successfully!': 'ਸਟੋਰੇਜ ਸਮਰੱਥਾ ਸਫਲਤਾਪੂਰਵਕ ਰਿਜ਼ਰਵ ਹੋਈ!',
+    'Sell Product': 'ਉਤਪਾਦ ਵੇਚੋ',
+    'Check Live Price': 'ਲਾਈਵ ਭਾਅ ਵੇਖੋ',
+    'Find Nearest Mandi': 'ਨੇੜਲੀ ਮੰਡੀ ਲੱਭੋ',
+    'Government Schemes': 'ਸਰਕਾਰੀ ਸਕੀਮਾਂ',
+    'Take Agri Loan': 'ਖੇਤੀਬਾੜੀ ਕਰਜ਼ਾ ਲਵੋ',
+    'Transportation & Logistics': 'ਆਵਾਜਾਈ ਅਤੇ ਲੌਜਿਸਟਿਕਸ',
+    'Book Cold Storage': 'ਕੋਲਡ ਸਟੋਰੇਜ ਬੁੱਕ ਕਰੋ',
+    'Support & Dispute': 'ਸਹਾਇਤਾ ਅਤੇ ਵਿਵਾਦ ਨਿਪਟਾਰਾ',
+    'Open Page': 'ਪੰਨਾ ਖੋਲ੍ਹੋ',
+    'Click any card to open page': 'ਪੰਨਾ ਖੋਲ੍ਹਣ ਲਈ ਕਿਸੇ ਵੀ ਕਾਰਡ ਤੇ ਕਲਿੱਕ ਕਰੋ',
+    'Krishi Services Hub': 'ਖੇਤੀਬਾੜੀ ਸੇਵਾਵਾਂ ਕੇਂਦਰ'
+  },
+  Bengali: {
+    'Search': 'অনুসন্ধান',
+    'Filter': 'ফিল্টার',
+    'Refresh': 'রিফ্রেশ',
+    'Loading...': 'লোড হচ্ছে...',
+    'Confirm': 'নিশ্চিত করুন',
+    'Cancel': 'বাতিল করুন',
+    'Close': 'বন্ধ করুন',
+    'Submit': 'জমা দিন',
+    'Apply': 'আবেদন করুন',
+    'Actions': 'পদক্ষেপ',
+    'View Details': 'বিস্তারিত দেখুন',
+    'Download': 'ডাউনলোড',
+    'Print': 'প্রিন্ট',
+    'Status': 'অবস্থা',
+    'All': 'সমস্ত',
+    'All Facilities': 'সমস্ত সুবিধা',
+    'All Warehouses': 'সমস্ত গুদাম',
+    'All India': 'সমগ্র ভারত',
+    'State': 'রাজ্য',
+    'Language': 'ভাষা',
+    'Light Mode': 'লাইট মোড',
+    'Dark Mode': 'ডার্ক মোড',
+    'Toggle Theme': 'থিম পরিবর্তন',
+    'Book Transport Now': 'পরিবহন বুক করুন',
+    'Track Shipment': 'চালান ট্র্যাক করুন',
+    'Call Driver Now': 'চালককে কল করুন',
+    'Print / Download Freight Bilty': 'বিল্টি প্রিন্ট / ডাউনলোড করুন',
+    'Print Bilty': 'বিল্টি প্রিন্ট করুন',
+    'Track Live': 'লাইভ ট্র্যাক করুন',
+    'Track Live GPS': 'লাইভ জিপিএস ট্র্যাক করুন',
+    'Book New Vehicle': 'নতুন গাড়ি বুক করুন',
+    'Reserve Storage Chamber': 'সংরক্ষণাগার বুক করুন',
+    'Reserve Storage Capacity': 'সংরক্ষণ ক্ষমতা বুক করুন',
+    'Open Directions in Google Maps': 'গুগল ম্যাপে দিকনির্দেশ খুলুন',
+    'Sort by Nearest GPS': 'নিকটতম জিপিএস অনুযায়ী সাজান',
+    'Use My GPS Location': 'আমার জিপিএস অবস্থান ব্যবহার করুন',
+    'Selected for Booking': 'বুকিংয়ের জন্য নির্বাচিত',
+    'Select Vehicle': 'গাড়ি নির্বাচন করুন',
+    'Estimated Trip Fare': 'আনুমানিক ভাড়া',
+    'Pickup Location (Farm Gate / Village)': 'পিকআপের অবস্থান (খামারের গেট / গ্রাম)',
+    'Destination APMC Mandi / Buyer Depot': 'গন্তব্য এপিএমসি মান্ডি / ডিপো',
+    'Cargo Commodity': 'ফসলের পণ্য',
+    'Weight (Quintals)': 'ওজন (কুইন্টাল)',
+    'Estimated Transit Distance (km)': 'আনুমানিক দূরত্ব (কিমি)',
+    'Pickup Date': 'পিকআপের তারিখ',
+    'Preferred Time Slot': 'পছন্দের সময় স্লট',
+    'Contact Phone': 'যোগাযোগের ফোন',
+    'Special Driver Instructions (Optional)': 'চালকের জন্য বিশেষ নির্দেশাবলী (ঐচ্ছিক)',
+    'Confirm Transport & Dispatch Driver': 'পরিবহন নিশ্চিত করুন ও চালক পাঠান',
+    'Current Speed': 'বর্তমান গতি',
+    'Remaining': 'বাকি',
+    'ETA to Mandi': 'মান্ডি পৌঁছানোর সময়',
+    'Cargo Condition': 'পণ্যের অবস্থা',
+    'Mandi Gate Pass OTP': 'মান্ডি গেট পাস ওটিপি',
+    'Transit Checkpoints & Milestones': 'ট্রানজিট চেকপয়েন্ট',
+    'Assigned Driver & Hauler Profile': 'চালক প্রোফাইল',
+    'Fast-Track Mandi Ingate Clearance': 'মান্ডি গেট দ্রুত ছাড়পত্র',
+    'My Consignments & Logistics Management': 'আমার চালান এবং লজিস্টিকস ব্যবস্থাপনা',
+    'Transport Booked Successfully!': 'পরিবহন সফলভাবে বুক করা হয়েছে!',
+    'Capacity Reserved Successfully!': 'সংরক্ষণ সফলভাবে নিশ্চিত হয়েছে!',
+    'Sell Product': 'পণ্য বিক্রি করুন',
+    'Check Live Price': 'লাইভ দর দেখুন',
+    'Find Nearest Mandi': 'নিকটতম মান্ডি খুঁজুন',
+    'Government Schemes': 'সরকারি প্রকল্প',
+    'Take Agri Loan': 'কৃষি ঋণ নিন',
+    'Transportation & Logistics': 'পরিবহন ও লজিস্টিকস',
+    'Book Cold Storage': 'কোল্ড স্টোরেজ বুক করুন',
+    'Support & Dispute': 'সহায়তা ও বিরোধ নিষ্পত্তি',
+    'Open Page': 'পৃষ্ঠা খুলুন',
+    'Click any card to open page': 'পৃষ্ঠা খুলতে যেকোনো কার্ডে ক্লিক করুন',
+    'Krishi Services Hub': 'কৃষি সেবা কেন্দ্র'
+  },
+  Gujarati: {
+    'Search': 'શોધો',
+    'Filter': 'ફિલ્ટર',
+    'Refresh': 'રીફ્રેશ',
+    'Loading...': 'લોડ થઈ રહ્યું છે...',
+    'Confirm': 'પુષ્ટિ કરો',
+    'Cancel': 'રદ કરો',
+    'Close': 'બંધ કરો',
+    'Submit': 'સબમિટ કરો',
+    'Apply': 'લાગુ કરો',
+    'Actions': 'ક્રિયાઓ',
+    'View Details': 'વિગતો જુઓ',
+    'Download': 'ડાઉનલોડ',
+    'Print': 'પ્રિન્ટ કરો',
+    'Status': 'સ્થિતિ',
+    'All': 'બધા',
+    'All Facilities': 'બધી સુવિધાઓ',
+    'All Warehouses': 'બધા ગોડાઉન',
+    'All India': 'સમગ્ર ભારત',
+    'State': 'રાજ્ય',
+    'Language': 'ભાષા',
+    'Light Mode': 'લાઇટ મોડ',
+    'Dark Mode': 'ડાર્ક મોડ',
+    'Toggle Theme': 'થીમ બદલો',
+    'Book Transport Now': 'પરિવહન હમણાં બુક કરો',
+    'Track Shipment': 'શિપમેન્ટ ટ્રેક કરો',
+    'Call Driver Now': 'ડ્રાઈવરને કૉલ કરો',
+    'Print / Download Freight Bilty': 'બિલ્ટી પ્રિન્ટ / ડાઉનલોડ કરો',
+    'Print Bilty': 'બિલ્ટી પ્રિન્ટ કરો',
+    'Track Live': 'લાઈવ ટ્રેક કરો',
+    'Track Live GPS': 'લાઈવ જીપીએસ ટ્રેક કરો',
+    'Book New Vehicle': 'નવું વાહન બુક કરો',
+    'Reserve Storage Chamber': 'સંગ્રહ ચેમ્બર અનામત રાખો',
+    'Reserve Storage Capacity': 'સંગ્રહ ક્ષમતા અનામત રાખો',
+    'Open Directions in Google Maps': 'ગુગલ મેપ્સમાં દિશાઓ જુઓ',
+    'Sort by Nearest GPS': 'નજીકના જીપીએસ મુજબ સૉર્ટ કરો',
+    'Use My GPS Location': 'મારા જીપીએસ સ્થાનનો ઉપયોગ કરો',
+    'Selected for Booking': 'બુકિંગ માટે પસંદ કરેલ',
+    'Select Vehicle': 'વાહન પસંદ કરો',
+    'Estimated Trip Fare': 'અંદાજિત ભાડું',
+    'Pickup Location (Farm Gate / Village)': 'પિકઅપ સ્થાન (ખેતર ગેટ / ગામ)',
+    'Destination APMC Mandi / Buyer Depot': 'ગંતવ્ય એપીએમસી મંડી / ડેપો',
+    'Cargo Commodity': 'પાક / કોમોડિટી',
+    'Weight (Quintals)': 'વજન (ક્વિન્ટલ)',
+    'Estimated Transit Distance (km)': 'અંદાજિત અંતર (કિમી)',
+    'Pickup Date': 'પિકઅપ તારીખ',
+    'Preferred Time Slot': 'પસંદગીનો સમય સ્લોટ',
+    'Contact Phone': 'સંપર્ક ફોન',
+    'Special Driver Instructions (Optional)': 'ડ્રાઈવર માટે ખાસ સૂચનાઓ (વૈકલ્પિક)',
+    'Confirm Transport & Dispatch Driver': 'પરિવહનની પુષ્ટિ કરો અને ડ્રાઇવર મોકલો',
+    'Current Speed': 'વર્તમાન ગતિ',
+    'Remaining': 'બાકી',
+    'ETA to Mandi': 'મંડી પહોંચવાનો સમય',
+    'Cargo Condition': 'માલની સ્થિતિ',
+    'Mandi Gate Pass OTP': 'મંડી ગેટ પાસ ઓટીપી',
+    'Transit Checkpoints & Milestones': 'રસ્તાના ચેકપોઇન્ટ્સ',
+    'Assigned Driver & Hauler Profile': 'ડ્રાઈવર પ્રોફાઇલ',
+    'Fast-Track Mandi Ingate Clearance': 'મંડી ગેટ ઝડપી પ્રવેશ',
+    'My Consignments & Logistics Management': 'મારી ડિસ્પેચ અને લોજિસ્ટિક્સ મેનેજમેન્ટ',
+    'Transport Booked Successfully!': 'પરિવહન સફળતાપૂર્વક બુક થયું!',
+    'Capacity Reserved Successfully!': 'સંગ્રહ ક્ષમતા સફળતાપૂર્વક અનામત થઈ!',
+    'Sell Product': 'ઉત્પાદન વેચો',
+    'Check Live Price': 'લાઈવ ભાવ જુઓ',
+    'Find Nearest Mandi': 'નજીકની મંડી શોધો',
+    'Government Schemes': 'સરકારી યોજનાઓ',
+    'Take Agri Loan': 'કૃષિ લોન લો',
+    'Transportation & Logistics': 'વાહનવ્યવહાર અને લોજિસ્ટિક્સ',
+    'Book Cold Storage': 'કોલ્ડ સ્ટોરેજ બુક કરો',
+    'Support & Dispute': 'સહાયતા અને વિવાદ નિવારણ',
+    'Open Page': 'પેજ ખોલો',
+    'Click any card to open page': 'પેજ ખોલવા માટે કોઈપણ કાર્ડ પર ક્લિક કરો',
+    'Krishi Services Hub': 'કૃષિ સેવા કેન્દ્ર'
+  },
+  Marathi: {
+    'Search': 'शोधा',
+    'Filter': 'फिल्टर',
+    'Refresh': 'ताजे करा',
+    'Loading...': 'लोड होत आहे...',
+    'Confirm': 'पुष्टी करा',
+    'Cancel': 'रद्द करा',
+    'Close': 'बंद करा',
+    'Submit': 'सबमिट करा',
+    'Apply': 'लागू करा',
+    'Actions': 'कृती',
+    'View Details': 'तपशील पहा',
+    'Download': 'डाउनलोड',
+    'Print': 'प्रिंट करा',
+    'Status': 'स्थिती',
+    'All': 'सर्व',
+    'All Facilities': 'सर्व सुविधा',
+    'All Warehouses': 'सर्व गोदामे',
+    'All India': 'संपूर्ण भारत',
+    'State': 'राज्य',
+    'Language': 'भाषा',
+    'Light Mode': 'लाइट मोड',
+    'Dark Mode': 'डार्क मोड',
+    'Toggle Theme': 'थीम बदला',
+    'Book Transport Now': 'वाहतूक आता बुक करा',
+    'Track Shipment': 'शिपमेंट ट्रॅक करा',
+    'Call Driver Now': 'चालकाला कॉल करा',
+    'Print / Download Freight Bilty': 'बिल्टी प्रिंट / डाउनलोड करा',
+    'Print Bilty': 'बिल्टी प्रिंट करा',
+    'Track Live': 'थेट ट्रॅक करा',
+    'Track Live GPS': 'थेट जीपीएस ट्रॅक करा',
+    'Book New Vehicle': 'नवीन वाहन बुक करा',
+    'Reserve Storage Chamber': 'स्टोरेज चेंबर राखीव करा',
+    'Reserve Storage Capacity': 'स्टोरेज क्षमता राखीव करा',
+    'Open Directions in Google Maps': 'गुगल मॅप्सवर दिशा पहा',
+    'Sort by Nearest GPS': 'जवळच्या जीपीएसनुसार क्रमवारी लावा',
+    'Use My GPS Location': 'माझे जीपीएस स्थान वापरा',
+    'Selected for Booking': 'बुकिंगसाठी निवडले',
+    'Select Vehicle': 'वाहन निवडा',
+    'Estimated Trip Fare': 'अंदाजे भाडे',
+    'Pickup Location (Farm Gate / Village)': 'पिकअप ठिकाण (शेत गेट / गाव)',
+    'Destination APMC Mandi / Buyer Depot': 'गंतव्य एपीएमसी मार्केट यार्ड / डेपो',
+    'Cargo Commodity': 'पीक / माल',
+    'Weight (Quintals)': 'वजन (क्विंटल)',
+    'Estimated Transit Distance (km)': 'अंदाजे अंतर (किमी)',
+    'Pickup Date': 'पिकअप तारीख',
+    'Preferred Time Slot': 'पसंतीची वेळ स्लॉट',
+    'Contact Phone': 'संपर्क फोन',
+    'Special Driver Instructions (Optional)': 'चालकासाठी विशेष सूचना (पर्यायी)',
+    'Confirm Transport & Dispatch Driver': 'वाहतुकीची पुष्टी करा आणि चालक पाठवा',
+    'Current Speed': 'सध्याचा वेग',
+    'Remaining': 'शिल्लक अंतर',
+    'ETA to Mandi': 'मार्केट यार्ड पोहोचण्याची वेळ',
+    'Cargo Condition': 'मालाची स्थिती',
+    'Mandi Gate Pass OTP': 'मार्केट यार्ड गेट पास ओटीपी',
+    'Transit Checkpoints & Milestones': 'वाहतूक चेकपॉईंट',
+    'Assigned Driver & Hauler Profile': 'नियुक्त चालक प्रोफाइल',
+    'Fast-Track Mandi Ingate Clearance': 'मार्केट यार्ड त्वरित प्रवेश',
+    'My Consignments & Logistics Management': 'माझे डिस्पॅच आणि लॉजिस्टिक्स व्यवस्थापन',
+    'Transport Booked Successfully!': 'वाहतूक यशस्वीरित्या बुक झाली!',
+    'Capacity Reserved Successfully!': 'क्षमता यशस्वीरित्या राखीव झाली!',
+    'Sell Product': 'उत्पादन विका',
+    'Check Live Price': 'थेट बाजारभाव पहा',
+    'Find Nearest Mandi': 'जवळची बाजार समिती शोधा',
+    'Government Schemes': 'शासकीय योजना',
+    'Take Agri Loan': 'कृषी कर्ज घ्या',
+    'Transportation & Logistics': 'वाहतूक आणि लॉजिस्टिक्स',
+    'Book Cold Storage': 'कोल्ड स्टोरेज बुक करा',
+    'Support & Dispute': 'मदत आणि तक्रार निवारण',
+    'Open Page': 'पृष्ठ उघडा',
+    'Click any card to open page': 'पृष्ठ उघडण्यासाठी कोणत्याही कार्डवर क्लिक करा',
+    'Krishi Services Hub': 'कृषी सेवा केंद्र'
+  },
+  Telugu: {
+    'Search': 'శోధించండి',
+    'Filter': 'ఫిల్టర్',
+    'Refresh': 'రిఫ్రెష్',
+    'Loading...': 'లోడ్ అవుతోంది...',
+    'Confirm': 'నిర్ధారించండి',
+    'Cancel': 'రద్దు చేయండి',
+    'Close': 'మూసివేయి',
+    'Submit': 'సమర్పించండి',
+    'Apply': 'దరఖాస్తు చేయండి',
+    'Actions': 'చర్యలు',
+    'View Details': 'వివరాలను వీక్షించండి',
+    'Download': 'డౌన్‌లోడ్',
+    'Print': 'ప్రింట్',
+    'Status': 'స్థితి',
+    'All': 'అన్నీ',
+    'All Facilities': 'అన్ని సౌకర్యాలు',
+    'All Warehouses': 'అన్ని గిడ్డంగులు',
+    'All India': 'మొత్తం భారతదేశం',
+    'State': 'రాష్ట్రం',
+    'Language': 'భాష',
+    'Light Mode': 'లైట్ మోడ్',
+    'Dark Mode': 'డార్క్ మోడ్',
+    'Toggle Theme': 'థీమ్ మార్చండి',
+    'Book Transport Now': 'రవాణా ఇప్పుడే బుక్ చేయండి',
+    'Track Shipment': 'రవాణాను ట్రాక్ చేయండి',
+    'Call Driver Now': 'డ్రైవర్ కి కాల్ చేయండి',
+    'Print / Download Freight Bilty': 'బిల్టీని ప్రింట్ / డౌన్‌లోడ్ చేయండి',
+    'Print Bilty': 'బిల్టీ ప్రింట్ చేయండి',
+    'Track Live': 'లైవ్ ట్రాక్ చేయండి',
+    'Track Live GPS': 'లైవ్ GPS ట్రాక్ చేయండి',
+    'Book New Vehicle': 'కొత్త వాహనం బుక్ చేయండి',
+    'Reserve Storage Chamber': 'నిల్వ గదిని రిజర్వ్ చేయండి',
+    'Reserve Storage Capacity': 'నిల్వ సామర్థ్యాన్ని రిజర్వ్ చేయండి',
+    'Open Directions in Google Maps': 'గూగుల్ మ్యాప్స్‌లో దిశలను తెరవండి',
+    'Sort by Nearest GPS': 'సమీప GPS ప్రకారం క్రమబద్ధీకరించండి',
+    'Use My GPS Location': 'నా GPS స్థానాన్ని ఉపయోగించండి',
+    'Selected for Booking': 'బుకింగ్ కోసం ఎంపిక చేయబడింది',
+    'Select Vehicle': 'వాహనాన్ని ఎంచుకోండి',
+    'Estimated Trip Fare': 'అంచనా ప్రయాణ ఛార్జీ',
+    'Pickup Location (Farm Gate / Village)': 'పికప్ స్థానం (పొలం గేట్ / గ్రామం)',
+    'Destination APMC Mandi / Buyer Depot': 'గమ్యస్థానం APMC మార్కెట్ / డిపో',
+    'Cargo Commodity': 'పంట సరుకు',
+    'Weight (Quintals)': 'బరువు (క్వింటాళ్ళు)',
+    'Estimated Transit Distance (km)': 'అంచనా దూరం (కి.మీ)',
+    'Pickup Date': 'పికప్ తేదీ',
+    'Preferred Time Slot': 'ఇష్టపడే సమయ స్లాట్',
+    'Contact Phone': 'సంప్రదింపు ఫోన్',
+    'Special Driver Instructions (Optional)': 'డ్రైవర్ కోసం ప్రత్యేక సూచనలు',
+    'Confirm Transport & Dispatch Driver': 'రవాణాను నిర్ధారించండి & డ్రైవర్‌ను పంపండి',
+    'Current Speed': 'ప్రస్తుత వేగం',
+    'Remaining': 'మిగిలిన దూరం',
+    'ETA to Mandi': 'మార్కెట్ చేరే సమయం',
+    'Cargo Condition': 'సరుకు పరిస్థితి',
+    'Mandi Gate Pass OTP': 'మార్కెట్ గేట్ పాస్ OTP',
+    'Transit Checkpoints & Milestones': 'రవాణా చెక్‌పాయింట్‌లు',
+    'Assigned Driver & Hauler Profile': 'డ్రైవర్ ప్రొఫైల్',
+    'Fast-Track Mandi Ingate Clearance': 'మార్కెట్ గేట్ త్వరిత ప్రవేశం',
+    'My Consignments & Logistics Management': 'నా రవాణా & లాజిస్టిక్స్ నిర్వహణ',
+    'Transport Booked Successfully!': 'రవాణా విజయవంతంగా బుక్ చేయబడింది!',
+    'Capacity Reserved Successfully!': 'నిల్వ సామర్థ్యం విజయవంతంగా రిజర్వ్ చేయబడింది!',
+    'Sell Product': 'ఉత్పత్తిని అమ్మండి',
+    'Check Live Price': 'లైవ్ ధరలను తనిఖీ చేయండి',
+    'Find Nearest Mandi': 'సమీప మార్కెట్‌ను కనుగొనండి',
+    'Government Schemes': 'ప్రభుత్వ పథకాలు',
+    'Take Agri Loan': 'వ్యవసాయ రుణం తీసుకోండి',
+    'Transportation & Logistics': 'రవాణా మరియు లాజిస్టిక్స్',
+    'Book Cold Storage': 'కోల్డ్ స్టోరేజ్ బుక్ చేయండి',
+    'Support & Dispute': 'సహాయం & వివాద పరిష్కారం',
+    'Open Page': 'పేజీని తెరవండి',
+    'Click any card to open page': 'పేజీని తెరవడానికి ఏదైనా కార్డుపై క్లిక్ చేయండి',
+    'Krishi Services Hub': 'వ్యవసాయ సేవల కేంద్రం'
+  },
+  Tamil: {
+    'Search': 'தேடு',
+    'Filter': 'வடிகட்டி',
+    'Refresh': 'புதுப்பி',
+    'Loading...': 'ஏற்றுகிறது...',
+    'Confirm': 'உறுதிப்படுத்து',
+    'Cancel': 'ரத்துசெய்',
+    'Close': 'மூடு',
+    'Submit': 'சமர்ப்பி',
+    'Apply': 'விண்ணப்பிக்கவும்',
+    'Actions': 'செயல்கள்',
+    'View Details': 'விவரங்களை காண்க',
+    'Download': 'பதிவிறக்கு',
+    'Print': 'அச்சிடுக',
+    'Status': 'நிலை',
+    'All': 'அனைத்தும்',
+    'All Facilities': 'அனைத்து வசதிகள்',
+    'All Warehouses': 'அனைத்து கிடங்குகள்',
+    'All India': 'இந்தியா முழுவதும்',
+    'State': 'மாநிலம்',
+    'Language': 'மொழி',
+    'Light Mode': 'வெளிச்ச பயன்முறை',
+    'Dark Mode': 'இருண்ட பயன்முறை',
+    'Toggle Theme': 'தீம் மாற்று',
+    'Book Transport Now': 'போக்குவரத்தை பதிவு செய்க',
+    'Track Shipment': 'ஏற்றுமதியை கண்காணிக்கவும்',
+    'Call Driver Now': 'டிரைவரை அழைக்கவும்',
+    'Print / Download Freight Bilty': 'பில்டி அச்சிடுக / பதிவிறக்குக',
+    'Print Bilty': 'பில்டி அச்சிடுக',
+    'Track Live': 'நேரலை கண்காணிப்பு',
+    'Track Live GPS': 'நேரலை ஜிபிએસ கண்காணிப்பு',
+    'Book New Vehicle': 'புதிய வாகனம் பதிவு செய்க',
+    'Reserve Storage Chamber': 'சேமிப்பறை முன்பதிவு செய்',
+    'Reserve Storage Capacity': 'சேமிப்பு திறனை முன்பதிவு செய்',
+    'Open Directions in Google Maps': 'கூகுள் வரைபடத்தில் வழிகளைக் காண்க',
+    'Sort by Nearest GPS': 'அருகிலுள்ள ஜிபிஎஸ் மூலம் வரிசைப்படுத்து',
+    'Use My GPS Location': 'எனது ஜிபிஎஸ் இருப்பிடத்தைப் பயன்படுத்து',
+    'Selected for Booking': 'பதிவு செய்ய தேர்ந்தெடுக்கப்பட்டது',
+    'Select Vehicle': 'வாகனத்தைத் தேர்ந்தெடுக்கவும்',
+    'Estimated Trip Fare': 'மதிப்பிடப்பட்ட கட்டணம்',
+    'Pickup Location (Farm Gate / Village)': 'பிக்கப் இடம் (பண்ணை கேட் / கிராமம்)',
+    'Destination APMC Mandi / Buyer Depot': 'இலக்கு ஏபிஎம்சி சந்தை / டிப்போ',
+    'Cargo Commodity': 'பயிர் பொருள்',
+    'Weight (Quintals)': 'எடை (குவிண்டால்)',
+    'Estimated Transit Distance (km)': 'மதிப்பிடப்பட்ட தூரம் (கி.மீ)',
+    'Pickup Date': 'பிக்கப் தேதி',
+    'Preferred Time Slot': 'விருப்பமான நேர இடைவெளி',
+    'Contact Phone': 'தொடர்பு எண்',
+    'Special Driver Instructions (Optional)': 'டிரைவருக்கான சிறப்பு வழிமுறைகள்',
+    'Confirm Transport & Dispatch Driver': 'போக்குவரத்தை உறுதிசெய்து ஓட்டுநரை அனுப்பவும்',
+    'Current Speed': 'தற்போதைய வேகம்',
+    'Remaining': 'மீதமுள்ள தூரம்',
+    'ETA to Mandi': 'சந்தை வருகை நேரம்',
+    'Cargo Condition': 'பொருள் நிலை',
+    'Mandi Gate Pass OTP': 'சந்தை நுழைவு அனுமதி OTP',
+    'Transit Checkpoints & Milestones': 'பயண சோதனைச் சாவடிகள்',
+    'Assigned Driver & Hauler Profile': 'ஒதுக்கப்பட்ட ஓட்டுநர் சுயவிவரம்',
+    'Fast-Track Mandi Ingate Clearance': 'சந்தை நுழைவு அனுமதி',
+    'My Consignments & Logistics Management': 'என் ஏற்றுமதிகள் & மேலாண்மை',
+    'Transport Booked Successfully!': 'போக்குவரத்து வெற்றிகரமாக பதிவு செய்யப்பட்டது!',
+    'Capacity Reserved Successfully!': 'சேமிப்பு திறன் வெற்றிகரமாக ஒதுக்கப்பட்டது!',
+    'Sell Product': 'பொருளை விற்கவும்',
+    'Check Live Price': 'நேரலை சந்தை விலையை சரிபார்க்கவும்',
+    'Find Nearest Mandi': 'அருகிலுள்ள சந்தையைக் கண்டறியவும்',
+    'Government Schemes': 'அரசு திட்டங்கள்',
+    'Take Agri Loan': 'விவசாய கடன் பெறுக',
+    'Transportation & Logistics': 'போக்குவரத்து மற்றும் தளவாடங்கள்',
+    'Book Cold Storage': 'குளிர்பதன கிடங்கு முன்பதிவு செய்',
+    'Support & Dispute': 'ஆதரவு & சர்ச்சை தீர்வு',
+    'Open Page': 'பக்கத்தைத் திறக்கவும்',
+    'Click any card to open page': 'பக்கத்தைத் திறக்க ஏதேனும் கார்டைக் கிளிக் செய்யவும்',
+    'Krishi Services Hub': 'விவசாய சேவைகள் மையம்'
+  }
+};
+
+export function syncGoogleTranslate(targetLang) {
+  const code = ISO_LANG_MAP[targetLang] || 'en';
+  try {
+    const domain = window.location.hostname;
+    const cookieVal = code === 'en' ? '' : `/en/${code}`;
+    document.cookie = `googtrans=${cookieVal}; path=/;`;
+    if (domain && domain !== 'localhost') {
+      document.cookie = `googtrans=${cookieVal}; domain=${domain}; path=/;`;
+    }
+
+    const fireCombo = () => {
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        if (select.value !== code) {
+          select.value = code;
+          select.dispatchEvent(new Event('change'));
+        }
+        return true;
+      }
+      return false;
+    };
+
+    if (!fireCombo()) {
+      let attempts = 0;
+      const timer = setInterval(() => {
+        attempts++;
+        if (fireCombo() || attempts > 15) {
+          clearInterval(timer);
+        }
+      }, 250);
+    }
+  } catch (err) {
+    console.warn('Google Translate sync error:', err);
+  }
+}
+
+export function runDOMTranslation(lang) {
+  if (!lang || lang === 'English' || typeof document === 'undefined') return;
+  const dict = COMMON_UI_TRANSLATIONS[lang];
+  if (!dict) return;
+
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const parent = node.parentElement;
+        if (!parent) return NodeFilter.FILTER_REJECT;
+        const tag = parent.tagName.toLowerCase();
+        if (['script', 'style', 'noscript', 'code', 'pre'].includes(tag)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    }
+  );
+
+  let node;
+  while ((node = walker.nextNode())) {
+    const trimmed = node.nodeValue.trim();
+    if (dict[trimmed]) {
+      node.nodeValue = node.nodeValue.replace(trimmed, dict[trimmed]);
+    }
+  }
+}
+
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
@@ -1377,23 +1985,40 @@ export function LanguageProvider({ children }) {
     setLanguageState(targetLang);
     localStorage.setItem('krishilink_language', targetLang);
     try {
-      document.documentElement.lang = targetLang === 'English' ? 'en' :
-        targetLang === 'Hindi' ? 'hi' :
-        targetLang === 'Punjabi' ? 'pa' :
-        targetLang === 'Gujarati' ? 'gu' :
-        targetLang === 'Marathi' ? 'mr' :
-        targetLang === 'Telugu' ? 'te' :
-        targetLang === 'Tamil' ? 'ta' :
-        targetLang === 'Bengali' ? 'bn' : 'en';
+      document.documentElement.lang = ISO_LANG_MAP[targetLang] || 'en';
     } catch (e) {
       console.warn(e);
     }
+
+    // Trigger universal page translation
+    syncGoogleTranslate(targetLang);
+    runDOMTranslation(targetLang);
   };
+
+  useEffect(() => {
+    // Initial sync on mount
+    syncGoogleTranslate(language);
+    runDOMTranslation(language);
+
+    // Watch for dynamic DOM changes (modals, tabs, pagination) and translate
+    const observer = new MutationObserver(() => {
+      runDOMTranslation(language);
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [language]);
 
   const t = (key, fallback) => {
     const currentDict = TRANSLATIONS[language];
     if (currentDict && currentDict[key]) {
       return currentDict[key];
+    }
+    // Also check direct phrase translations
+    const common = COMMON_UI_TRANSLATIONS[language];
+    if (common) {
+      if (common[key]) return common[key];
+      if (fallback && common[fallback]) return common[fallback];
     }
     if (TRANSLATIONS.English && TRANSLATIONS.English[key]) {
       return TRANSLATIONS.English[key];
@@ -1415,3 +2040,4 @@ export function useLanguage() {
   }
   return context;
 }
+
