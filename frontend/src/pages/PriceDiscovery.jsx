@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { TrendingUp, Calendar, AlertCircle, Sparkles, Filter, RefreshCw, ArrowUpRight, ArrowDownRight, Minus, Clock } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { api } from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function PriceDiscovery({ selectedState }) {
+  const { t } = useLanguage();
   const [prices, setPrices] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -99,15 +101,15 @@ export default function PriceDiscovery({ selectedState }) {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
             <Sparkles color="var(--primary)" size={20} />
-            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>APMC Mandi Intelligence & AI Sale Window</h2>
+            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>{t('price_discovery_title', 'APMC Mandi Intelligence & AI Sale Window')}</h2>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-            Real-time price discovery across Mandis with predictive sale-window algorithms to maximize farmer profit margins.
+            {t('price_discovery_sub', 'Real-time price discovery across Mandis with predictive sale-window algorithms to maximize farmer profit margins.')}
           </p>
         </div>
 
         <button className="btn btn-outline" onClick={fetchPrices} style={{ display: 'flex', gap: '0.5rem' }}>
-          <RefreshCw size={16} /> Refresh Live Mandi Feeds
+          <RefreshCw size={16} /> {t('refresh', 'Refresh Live Mandi Feeds')}
         </button>
       </div>
 
@@ -115,13 +117,13 @@ export default function PriceDiscovery({ selectedState }) {
       <div className="glass-card responsive-filter-bar" style={{ padding: '1rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)' }}>
           <Filter size={18} />
-          <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>Filter Mandis:</span>
+          <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>{t('filter', 'Filter Mandis')}:</span>
         </div>
 
         <input
           type="text"
           className="form-input"
-          placeholder="Search Commodity (Wheat, Paddy, Tomato...)"
+          placeholder={t('search_commodity_placeholder', 'Search Commodity (Wheat, Paddy, Tomato...)...')}
           style={{ width: '260px' }}
           value={searchCommodity}
           onChange={e => setSearchCommodity(e.target.value)}
@@ -133,7 +135,7 @@ export default function PriceDiscovery({ selectedState }) {
           value={stateFilter}
           onChange={e => setStateFilter(e.target.value)}
         >
-          <option value="">All States</option>
+          <option value="">{t('select_state_filter', 'All States')}</option>
           <option value="Punjab">Punjab</option>
           <option value="Haryana">Haryana</option>
           <option value="Gujarat">Gujarat</option>
@@ -147,12 +149,12 @@ export default function PriceDiscovery({ selectedState }) {
         {/* Left Column: Price Cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <h3 style={{ fontSize: '1.1rem', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <TrendingUp size={18} color="var(--primary)" /> Live Mandi Commodity Rates
+            <TrendingUp size={18} color="var(--primary)" /> {t('live_rates', 'Live Mandi Commodity Rates')}
           </h3>
 
           {loading ? (
             <div className="glass-card" style={{ textAlign: 'center', padding: '3rem' }}>
-              <div style={{ color: 'var(--text-muted)' }}>Loading live mandi data...</div>
+              <div style={{ color: 'var(--text-muted)' }}>{t('loading', 'Loading live mandi data...')}</div>
             </div>
           ) : (
             prices.map(item => {

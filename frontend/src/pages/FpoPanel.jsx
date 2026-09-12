@@ -5,8 +5,10 @@ import {
   Building2, ArrowRight, UserPlus, UserMinus, ShoppingCart, Send, Headphones, Download, ChevronRight, BarChart2
 } from 'lucide-react';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function FpoPanel({ currentUser }) {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('groups');
   const [searchTerm, setSearchTerm] = useState('');
   const [stateFilter, setStateFilter] = useState('');
@@ -302,10 +304,10 @@ export default function FpoPanel({ currentUser }) {
           </div>
 
           <h1 style={{ fontSize: '1.75rem', color: '#fff', fontWeight: 800, marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Users color="#34d399" size={28} /> Farmer Producer Organizations (FPO) Portal
+            <Users color="#34d399" size={28} /> {t('fpo_panel_title', 'Farmer Producer Organizations (FPO) Portal')}
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', maxWidth: '780px' }}>
-            Join local farmer groups, pool crop yields for higher bulk bargaining power, sell aggregated FPO produce to B2B buyers, apply for ₹15 Lakhs Govt Equity Grants, and access market spread intelligence.
+            {t('fpo_panel_sub', 'Join local farmer groups, pool crop yields for higher bulk bargaining power, sell aggregated FPO produce to B2B buyers, apply for ₹15 Lakhs Govt Equity Grants, and access market spread intelligence.')}
           </p>
         </div>
 

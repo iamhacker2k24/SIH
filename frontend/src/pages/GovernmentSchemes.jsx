@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Landmark, ArrowLeft, CheckCircle2, ShieldCheck, Zap, Sparkles, ExternalLink } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function GovernmentSchemes() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [filterCategory, setFilterCategory] = useState('All');
 
   const schemesList = [
@@ -71,17 +73,17 @@ export default function GovernmentSchemes() {
         border: '1px solid #8b5cf640'
       }}>
         <button className="btn btn-outline" style={{ width: 'fit-content', marginBottom: '0.75rem' }} onClick={() => navigate('/')}>
-          <ArrowLeft size={16} /> Back to Farmer Hub
+          <ArrowLeft size={16} /> {t('nav_home', 'Back to Farmer Hub')}
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
           <span className="badge badge-gold">🏛️ Direct Beneficiary Transfer</span>
         </div>
         <h1 style={{ fontSize: '1.75rem', color: '#fff', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Landmark color="#8b5cf6" size={26} /> Government Farmer Schemes & Subsidies
+          <Landmark color="#8b5cf6" size={26} /> {t('schemes_title', 'Government Farmer Schemes & Subsidies')}
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '750px' }}>
-          Explore central and state government agricultural schemes, DBT financial assistance, and subsidy portals.
+          {t('schemes_sub', 'Explore central and state government agricultural schemes, DBT financial assistance, and subsidy portals.')}
         </p>
       </div>
 

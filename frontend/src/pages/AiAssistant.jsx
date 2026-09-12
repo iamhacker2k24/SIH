@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bot, Send, Sparkles, Sprout, ShieldCheck, Zap, RefreshCw } from 'lucide-react';
 import { api } from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function AiAssistant({ selectedLanguage, selectedState }) {
+  const { language: ctxLang, t } = useLanguage();
+  const currentLanguage = selectedLanguage || ctxLang;
+
   const [prompt, setPrompt] = useState('');
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: `Namaste! I am your KrishiAI Market Advisor powered by Gemini 1.5. Ask me anything about current Mandi trends, optimal holding periods, grade specifications, or storage strategies across Indian states.`
+      text: t('ai_greeting', 'Namaste! I am your KrishiAI Market Advisor powered by Gemini 1.5. Ask me anything about current Mandi trends, optimal holding periods, grade specifications, or storage strategies across Indian states.')
     }
   ]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setMessages(prev => {
+      if (prev.length === 1 && prev[0].sender === 'bot') {
+        return [{
+          sender: 'bot',
+          text: t('ai_greeting', 'Namaste! I am your KrishiAI Market Advisor powered by Gemini 1.5. Ask me anything about current Mandi trends, optimal holding periods, grade specifications, or storage strategies across Indian states.')
+        }];
+      }
+      return prev;
+    });
+  }, [currentLanguage]);
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -25,7 +41,7 @@ export default function AiAssistant({ selectedLanguage, selectedState }) {
       const res = await api.getAiAdvisory({
         prompt: userText,
         state: selectedState,
-        language: selectedLanguage
+        language: currentLanguage
       });
 
       if (res.success) {
@@ -66,9 +82,9 @@ export default function AiAssistant({ selectedLanguage, selectedState }) {
             <Bot size={26} color="#fff" />
           </div>
           <div>
-            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>KrishiAI Assistant & Price Advisor</h2>
+            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>{t('ai_copilot', 'KrishiAI Assistant & Price Advisor')}</h2>
             <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-              Gemini 1.5 Flash AI • Language: <strong>{selectedLanguage}</strong> • Region: <strong>{selectedState || 'All India'}</strong>
+              Gemini 1.5 Flash AI • Language: <strong>{currentLanguage}</strong> • Region: <strong>{selectedState || t('nav_all_india', 'All India')}</strong>
             </div>
           </div>
         </div>
@@ -117,7 +133,7 @@ export default function AiAssistant({ selectedLanguage, selectedState }) {
           <input
             type="text"
             className="form-input"
-            placeholder={`Ask KrishiAI in ${selectedLanguage} (e.g. Should I sell Onion now in Nashik Mandi?)`}
+            placeholder={t('ai_placeholder_detailed', `Ask KrishiAI in ${currentLanguage} (e.g. Should I sell Onion now in Nashik Mandi?)`)}
             value={prompt}
             onChange={e => setPrompt(e.target.value)}
             disabled={loading}

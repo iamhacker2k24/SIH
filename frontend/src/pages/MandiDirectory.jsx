@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { MapPin, PhoneCall, Search, Filter, Sprout, ArrowLeft, CheckCircle2, Award, Navigation, ExternalLink, Compass } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function MandiDirectory({ selectedState }) {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [userLocation, setUserLocation] = useState(null); // { lat, lng, address }
   const [isLocating, setIsLocating] = useState(false);
@@ -81,17 +83,17 @@ export default function MandiDirectory({ selectedState }) {
         border: '1px solid #3b82f640'
       }}>
         <button className="btn btn-outline" style={{ width: 'fit-content', marginBottom: '0.75rem' }} onClick={() => navigate('/')}>
-          <ArrowLeft size={16} /> Back to Farmer Hub
+          <ArrowLeft size={16} /> {t('nav_home', 'Back to Farmer Hub')}
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
           <span className="badge badge-blue">📍 Google Maps GPS Mandi Finder</span>
         </div>
         <h1 style={{ fontSize: '1.75rem', color: '#fff', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <MapPin color="#3b82f6" size={26} /> Nearest APMC Mandis & Google Map Navigation
+          <MapPin color="#3b82f6" size={26} /> {t('mandi_directory_title', 'Nearest APMC Mandis & Google Map Navigation')}
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '750px' }}>
-          Detect your current live GPS position to sort nearby APMC Mandis by distance and get turn-by-turn Google Maps driving directions.
+          {t('mandi_directory_sub', 'Detect your current live GPS position to sort nearby APMC Mandis by distance and get turn-by-turn Google Maps driving directions.')}
         </p>
       </div>
 
@@ -103,7 +105,7 @@ export default function MandiDirectory({ selectedState }) {
             type="text"
             className="form-input"
             style={{ paddingLeft: '2.4rem' }}
-            placeholder="Search Mandi name, crop, or district..."
+            placeholder={t('search_mandi', 'Search Mandi name, crop, or district...')}
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
           />

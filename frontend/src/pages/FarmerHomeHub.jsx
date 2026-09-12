@@ -5,92 +5,94 @@ import {
   CreditCard, Sparkles, Sprout, ChevronRight
 } from 'lucide-react';
 import CreateLotModal from '../components/CreateLotModal';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function FarmerHomeHub({ currentUser, selectedState }) {
   const navigate = useNavigate();
   const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const { t } = useLanguage();
 
   // Rectangular Action Cards Config with URL routing
   const rectCards = [
     {
       id: 'sell',
-      title: 'Sell Product',
-      subtitle: 'Post harvested crop & set your desire asking price',
+      title: t('card_sell_title', 'Sell Product'),
+      subtitle: t('card_sell_sub', 'Post harvested crop & set your desire asking price'),
       icon: Store,
       color: '#10b981',
       bgGradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.05) 100%)',
       action: () => navigate('/marketplace'),
-      tag: 'Direct Buyer Sale'
+      tag: t('card_sell_tag', 'Direct Buyer Sale')
     },
     {
       id: 'price',
-      title: 'Check Live Price',
-      subtitle: 'Real-time Mandi price discovery & AI sale forecasts',
+      title: t('card_price_title', 'Check Live Price'),
+      subtitle: t('card_price_sub', 'Real-time Mandi price discovery & AI sale forecasts'),
       icon: TrendingUp,
       color: '#f59e0b',
       bgGradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.05) 100%)',
       action: () => navigate('/price'),
-      tag: 'Live Analytics'
+      tag: t('card_price_tag', 'Live Analytics')
     },
     {
       id: 'mandi',
-      title: 'Find Nearest Mandi',
-      subtitle: 'Locate local APMC grain markets & active traders',
+      title: t('card_mandi_title', 'Find Nearest Mandi'),
+      subtitle: t('card_mandi_sub', 'Locate local APMC grain markets & active traders'),
       icon: MapPin,
       color: '#3b82f6',
       bgGradient: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(29, 78, 216, 0.05) 100%)',
       action: () => navigate('/mandis'),
-      tag: 'APMC Directory'
+      tag: t('card_mandi_tag', 'APMC Directory')
     },
     {
       id: 'schemes',
-      title: 'Government Schemes',
-      subtitle: 'PM-KISAN, PMFBY crop insurance & solar pump subsidies',
+      title: t('card_schemes_title', 'Government Schemes'),
+      subtitle: t('card_schemes_sub', 'PM-KISAN, PMFBY crop insurance & solar pump subsidies'),
       icon: Landmark,
       color: '#8b5cf6',
       bgGradient: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(109, 40, 217, 0.05) 100%)',
       action: () => navigate('/schemes'),
-      tag: 'Sarkari Subsidy'
+      tag: t('card_schemes_tag', 'Sarkari Subsidy')
     },
     {
       id: 'loan',
-      title: 'Take Agri Loan',
-      subtitle: 'Low-interest 4% Kisan Credit Line & instant loan approval',
+      title: t('card_loan_title', 'Take Agri Loan'),
+      subtitle: t('card_loan_sub', 'Low-interest 4% Kisan Credit Line & instant loan approval'),
       icon: CreditCard,
       color: '#ec4899',
       bgGradient: 'linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(190, 24, 93, 0.05) 100%)',
       action: () => navigate('/loans'),
-      tag: '4% KCC Credit'
+      tag: t('card_loan_tag', '4% KCC Credit')
     },
     {
       id: 'rates',
-      title: 'Live Commodity Rates',
-      subtitle: 'Detailed commodity rate charts & historical 30-day trends',
+      title: t('card_rates_title', 'Live Commodity Rates'),
+      subtitle: t('card_rates_sub', 'Detailed commodity rate charts & historical 30-day trends'),
       icon: Sprout,
       color: '#14b8a6',
       bgGradient: 'linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, rgba(13, 148, 136, 0.05) 100%)',
       action: () => navigate('/price'),
-      tag: '30-Day Trends'
+      tag: t('card_rates_tag', '30-Day Trends')
     },
     {
       id: 'storage',
-      title: 'Book Cold Storage',
-      subtitle: 'WDRA certified warehouses & climate control chambers',
+      title: t('card_storage_title', 'Book Cold Storage'),
+      subtitle: t('card_storage_sub', 'WDRA certified warehouses & climate control chambers'),
       icon: Warehouse,
       color: '#06b6d4',
       bgGradient: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(14, 116, 144, 0.05) 100%)',
       action: () => navigate('/logistics'),
-      tag: 'Storage & Freight'
+      tag: t('card_storage_tag', 'Storage & Freight')
     },
     {
       id: 'support',
-      title: 'Support & Dispute',
-      subtitle: 'APMC helpline & payment/quality dispute resolution desk',
+      title: t('card_support_title', 'Support & Dispute'),
+      subtitle: t('card_support_sub', 'APMC helpline & payment/quality dispute resolution desk'),
       icon: ShieldAlert,
       color: '#ef4444',
       bgGradient: 'linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(185, 28, 28, 0.05) 100%)',
       action: () => navigate('/grievance'),
-      tag: 'Helpline Desk'
+      tag: t('card_support_tag', 'Helpline Desk')
     }
   ];
 
@@ -108,18 +110,18 @@ export default function FarmerHomeHub({ currentUser, selectedState }) {
         <div style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
             <span className="badge badge-green">
-              <Sparkles size={12} /> KrishiLink Farmer Portal
+              <Sparkles size={12} /> {t('portal_badge', 'KrishiLink Farmer Portal')}
             </span>
             <span className="badge badge-gold">
-              Namaste, {currentUser?.name ? currentUser.name.split(' ')[0] : 'Kisan'} Ji!
+              {t('greeting_namaste', 'Namaste')}, {currentUser?.name ? currentUser.name.split(' ')[0] : t('farmer_role', 'Kisan')} {t('greeting_ji', 'Ji')}!
             </span>
           </div>
 
           <h1 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '0.5rem' }}>
-            Select an Option Below to Access Krishi Services
+            {t('hero_title', 'Select an Option Below to Access Krishi Services')}
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '750px' }}>
-            Instant direct access to produce sales, live Mandi rates, nearest APMC markets, government crop subsidies, low-interest Kisan credit loans, and cold storage booking.
+            {t('hero_subtitle', 'Instant direct access to produce sales, live Mandi rates, nearest APMC markets, government crop subsidies, low-interest Kisan credit loans, and cold storage booking.')}
           </p>
         </div>
       </div>
@@ -128,9 +130,9 @@ export default function FarmerHomeHub({ currentUser, selectedState }) {
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
           <h2 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 700 }}>
-            🌾 Krishi Services Hub
+            {t('services_hub_title', '🌾 Krishi Services Hub')}
           </h2>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Click any card to open page</span>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{t('click_card_hint', 'Click any card to open page')}</span>
         </div>
 
         <div style={{
@@ -210,7 +212,7 @@ export default function FarmerHomeHub({ currentUser, selectedState }) {
                   fontWeight: 700,
                   color: card.color
                 }}>
-                  Open Page <ChevronRight size={16} />
+                  {t('open_page', 'Open Page')} <ChevronRight size={16} />
                 </div>
               </div>
             );

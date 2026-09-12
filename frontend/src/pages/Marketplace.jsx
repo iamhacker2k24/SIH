@@ -3,8 +3,10 @@ import { Store, Plus, Filter, CheckCircle2, DollarSign, Award, MapPin, Package, 
 import { api } from '../services/api';
 import CreateLotModal from '../components/CreateLotModal';
 import PlaceBidModal from '../components/PlaceBidModal';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Marketplace({ currentUser }) {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('farmer_lots'); // 'farmer_lots' | 'buyer_demands'
   const [lots, setLots] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -127,23 +129,23 @@ export default function Marketplace({ currentUser }) {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
             <Store color="var(--primary)" size={22} />
-            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>Digital Produce Marketplace & Buyer Demands</h2>
+            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>{t('marketplace_title', 'Digital Produce Marketplace & Buyer Demands')}</h2>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-            Direct lot creation by Farmers/FPOs and verified bulk procurement tenders posted by institutional buyers.
+            {t('marketplace_sub', 'Direct lot creation by Farmers/FPOs and verified bulk procurement tenders posted by institutional buyers.')}
           </p>
         </div>
 
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
           {(currentUser?.role === 'Farmer' || currentUser?.role === 'FPO') && (
             <button className="btn btn-primary" onClick={() => setIsCreateOpen(true)}>
-              <Plus size={18} /> Post Produce Lot (Desire Price)
+              <Plus size={18} /> {t('post_produce_lot', 'Post Produce Lot (Desire Price)')}
             </button>
           )}
 
           {currentUser?.role === 'Buyer' && (
             <button className="btn btn-gold" onClick={() => alert('Opening Buyer Demand Tender Form: Specify commodity, target volume & buying rate.')}>
-              <Plus size={18} /> Post Buyer Procurement Tender
+              <Plus size={18} /> {t('post_buyer_tender', 'Post Buyer Procurement Tender')}
             </button>
           )}
         </div>
@@ -156,14 +158,14 @@ export default function Marketplace({ currentUser }) {
           style={{ flex: 1, minWidth: '200px' }}
           onClick={() => setActiveTab('farmer_lots')}
         >
-          🌾 Farmer Crop Lots Available ({lots.length})
+          🌾 {t('farmer_crop_lots', 'Farmer Crop Lots Available')} ({lots.length})
         </button>
         <button
           className={`btn ${activeTab === 'buyer_demands' ? 'btn-gold' : 'btn-outline'}`}
           style={{ flex: 1, minWidth: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
           onClick={() => setActiveTab('buyer_demands')}
         >
-          <Flame size={18} color="#f59e0b" /> Recent Buyer Demands & Tenders ({buyerDemands.length})
+          <Flame size={18} color="#f59e0b" /> {t('recent_buyer_demands', 'Recent Buyer Demands & Tenders')} ({buyerDemands.length})
         </button>
       </div>
 
@@ -171,11 +173,11 @@ export default function Marketplace({ currentUser }) {
       <div className="glass-card responsive-filter-bar" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)' }}>
           <Filter size={18} />
-          <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>Filter Listings:</span>
+          <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>{t('filter_listings', 'Filter Listings')}:</span>
         </div>
 
         <select className="form-select" style={{ width: '200px' }} value={commodityFilter} onChange={e => setCommodityFilter(e.target.value)}>
-          <option value="">All Commodities</option>
+          <option value="">{t('all_commodities', 'All Commodities')}</option>
           <option value="Wheat">Wheat</option>
           <option value="Paddy">Paddy / Rice</option>
           <option value="Cotton">Cotton</option>
@@ -184,7 +186,7 @@ export default function Marketplace({ currentUser }) {
         </select>
 
         <select className="form-select" style={{ width: '200px' }} value={gradeFilter} onChange={e => setGradeFilter(e.target.value)}>
-          <option value="">All Quality Grades</option>
+          <option value="">{t('all_grades', 'All Quality Grades')}</option>
           <option value="Grade A">Grade A</option>
           <option value="Grade B">Grade B</option>
           <option value="Organic Certified">Organic Certified</option>
@@ -192,7 +194,7 @@ export default function Marketplace({ currentUser }) {
 
         {(commodityFilter || gradeFilter) && (
           <button className="btn btn-outline" style={{ padding: '0.4rem 0.85rem', fontSize: '0.8rem' }} onClick={handleResetFilters}>
-            <RefreshCw size={14} /> Clear Filters
+            <RefreshCw size={14} /> {t('clear_filters', 'Clear Filters')}
           </button>
         )}
       </div>

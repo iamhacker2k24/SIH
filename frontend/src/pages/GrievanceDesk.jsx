@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldAlert, Plus, CheckCircle2, Clock, AlertTriangle, FileText } from 'lucide-react';
 import { api } from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function GrievanceDesk({ currentUser }) {
+  const { t } = useLanguage();
   const [grievances, setGrievances] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isSubmitOpen, setIsSubmitOpen] = useState(false);
@@ -79,15 +81,15 @@ export default function GrievanceDesk({ currentUser }) {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
             <ShieldAlert color="var(--accent-red)" size={24} />
-            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>Dispute & Grievance Redressal Desk</h2>
+            <h2 style={{ fontSize: '1.4rem', color: '#fff' }}>{t('grievance_title', 'Dispute & Grievance Redressal Desk')}</h2>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-            Transparent ticket resolution for quality disputes, weight discrepancies, and payment delays monitored by Mandi Regulatory Inspectors.
+            {t('grievance_sub', 'Transparent ticket resolution for quality disputes, weight discrepancies, and payment delays monitored by Mandi Regulatory Inspectors.')}
           </p>
         </div>
 
         <button className="btn btn-outline" style={{ borderColor: 'var(--accent-red)', color: '#f87171' }} onClick={() => setIsSubmitOpen(true)}>
-          <Plus size={16} /> File New Grievance Ticket
+          <Plus size={16} /> {t('file_grievance', 'File New Grievance Ticket')}
         </button>
       </div>
 
@@ -96,7 +98,7 @@ export default function GrievanceDesk({ currentUser }) {
         <h3 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.75rem' }}>Submitted Disputes & Grievances</h3>
 
         {loading ? (
-          <div className="glass-card" style={{ color: 'var(--text-muted)' }}>Loading grievance tickets...</div>
+          <div className="glass-card" style={{ color: 'var(--text-muted)' }}>{t('loading', 'Loading grievance tickets...')}</div>
         ) : (
           <div className="grid-2">
             {grievances.map(ticket => (

@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bot, X, Send, Sparkles, Sprout, RefreshCw, MessageSquare } from 'lucide-react';
 import { api } from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function FloatingAiChat({ selectedLanguage, selectedState }) {
+  const { language: ctxLang, t } = useLanguage();
+  const currentLanguage = selectedLanguage || ctxLang;
+
   const [isOpen, setIsOpen] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: `Namaste! I am KrishiAI powered by Gemini 1.5. How can I assist your crop sales or mandi price strategy today?`
+      text: t('ai_greeting', 'Namaste! I am KrishiAI powered by Gemini 1.5. How can I assist your crop sales or mandi price strategy today?')
     }
   ]);
   const [loading, setLoading] = useState(false);
+
+  // Update initial greeting if language changes and only initial message is present
+  useEffect(() => {
+    setMessages(prev => {
+      if (prev.length === 1 && prev[0].sender === 'bot') {
+        return [{
+          sender: 'bot',
+          text: t('ai_greeting', 'Namaste! I am KrishiAI powered by Gemini 1.5. How can I assist your crop sales or mandi price strategy today?')
+        }];
+      }
+      return prev;
+    });
+  }, [currentLanguage]);
 
   const quickPrompts = [
     'Optimal Wheat sale window?',
@@ -32,7 +49,7 @@ export default function FloatingAiChat({ selectedLanguage, selectedState }) {
       const res = await api.getAiAdvisory({
         prompt: query,
         state: selectedState,
-        language: selectedLanguage
+        language: currentLanguage
       });
 
       if (res.success) {
@@ -90,11 +107,11 @@ export default function FloatingAiChat({ selectedLanguage, selectedState }) {
               </div>
               <div>
                 <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#fff', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  KrishiAI Assistant
+                  {t('ai_title', 'KrishiAI Assistant')}
                   <span className="badge badge-green" style={{ fontSize: '0.6rem', padding: '1px 6px' }}>Gemini</span>
                 </div>
                 <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)' }}>
-                  Lang: {selectedLanguage} • Region: {selectedState || 'All India'}
+                  Lang: {currentLanguage} • Region: {selectedState || t('nav_all_india', 'All India')}
                 </div>
               </div>
             </div>
@@ -170,7 +187,7 @@ export default function FloatingAiChat({ selectedLanguage, selectedState }) {
             <input
               type="text"
               className="form-input"
-              placeholder={`Ask in ${selectedLanguage}...`}
+              placeholder={t('ai_placeholder', `Ask in ${currentLanguage}...`)}
               style={{ fontSize: '0.8rem', padding: '0.5rem 0.75rem' }}
               value={prompt}
               onChange={e => setPrompt(e.target.value)}

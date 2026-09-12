@@ -5,8 +5,10 @@ import {
   Flag, Headphones, MessageSquare, ShieldAlert, Phone, Mail, HelpCircle, Send
 } from 'lucide-react';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function BuyerPanel({ currentUser }) {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('tenders');
   const [searchTerm, setSearchTerm] = useState('');
   const [commodityFilter, setCommodityFilter] = useState('');
@@ -428,10 +430,10 @@ export default function BuyerPanel({ currentUser }) {
           </div>
 
           <h1 style={{ fontSize: '1.75rem', color: '#fff', fontWeight: 800, marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Building2 color="#60a5fa" size={28} /> Institutional Buyer & Bulk Procurement Portal
+            <Building2 color="#60a5fa" size={28} /> {t('buyer_panel_title', 'Institutional Buyer & Bulk Procurement Portal')}
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', maxWidth: '750px' }}>
-            Post bulk crop tenders, bid directly on verified farmer lots, lock funds in KrishiLink Escrow Vault, report quality issues, and access 24/7 priority support.
+            {t('buyer_panel_sub', 'Post bulk crop tenders, bid directly on verified farmer lots, lock funds in KrishiLink Escrow Vault, report quality issues, and access 24/7 priority support.')}
           </p>
         </div>
 

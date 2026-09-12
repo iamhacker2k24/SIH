@@ -7,9 +7,13 @@ import {
 } from 'lucide-react';
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
+import {
+  AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function AdminPanel({ currentUser }) {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState('');
 
@@ -382,10 +386,10 @@ export default function AdminPanel({ currentUser }) {
           </div>
 
           <h1 style={{ fontSize: '1.75rem', color: '#fff', fontWeight: 800, marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <ShieldCheck color="#ec4899" size={28} /> APMC Mandi Regulatory & Govt Audit Dashboard
+            <ShieldCheck color="#ec4899" size={28} /> {t('admin_panel_title', 'APMC Mandi Regulatory & Govt Audit Dashboard')}
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', maxWidth: '750px' }}>
-            Aadhaar document verification, Government Schemes creation & management, Excel audit exports, and staff rosters.
+            {t('admin_panel_sub', 'Aadhaar document verification, Government Schemes creation & management, Excel audit exports, and staff rosters.')}
           </p>
         </div>
 

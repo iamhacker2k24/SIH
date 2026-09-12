@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { CreditCard, ArrowLeft, CheckCircle2, ShieldCheck, Zap, Calculator, Landmark } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function AgriLoans({ currentUser }) {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [amount, setAmount] = useState(150000);
   const [tenure, setTenure] = useState(12);
   const [purpose, setPurpose] = useState('Seeds & Crop Input Purchase');
@@ -27,17 +29,17 @@ export default function AgriLoans({ currentUser }) {
         border: '1px solid #ec489940'
       }}>
         <button className="btn btn-outline" style={{ width: 'fit-content', marginBottom: '0.75rem' }} onClick={() => navigate('/')}>
-          <ArrowLeft size={16} /> Back to Farmer Hub
+          <ArrowLeft size={16} /> {t('nav_home', 'Back to Farmer Hub')}
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
           <span className="badge badge-gold">💳 Kisan Credit Card (KCC) Portal</span>
         </div>
         <h1 style={{ fontSize: '1.75rem', color: '#fff', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <CreditCard color="#ec4899" size={26} /> Instant Low-Interest Agri Loan & Credit Line
+          <CreditCard color="#ec4899" size={26} /> {t('loans_title', 'Instant Low-Interest Agri Loan & Credit Line')}
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '750px' }}>
-          Apply for instant pre-approved Kisan Credit Card funds at 4% effective interest rate with government prompt repayment subvention.
+          {t('loans_sub', 'Apply for instant pre-approved Kisan Credit Card funds at 4% effective interest rate with government prompt repayment subvention.')}
         </p>
       </div>
 

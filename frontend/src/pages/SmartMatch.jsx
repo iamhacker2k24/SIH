@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Zap, ShieldCheck, CheckCircle2, ArrowRight, Building2, UserCheck, Scale, Award } from 'lucide-react';
 import { api } from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function SmartMatch({ currentUser }) {
+  const { t } = useLanguage();
   const [matches, setMatches] = useState([]);
   const [demands, setDemands] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,10 +37,10 @@ export default function SmartMatch({ currentUser }) {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
           <Zap color="var(--accent-gold)" size={24} />
-          <h2 style={{ fontSize: '1.5rem', color: '#fff' }}>Smart Matchmaker: FPO & Institutional Buyer Engine</h2>
+          <h2 style={{ fontSize: '1.5rem', color: '#fff' }}>{t('smart_match_title', 'Smart Matchmaker: FPO & Institutional Buyer Engine')}</h2>
         </div>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-          AI-assisted direct linkage pairing Farmer/FPO produce lots with verified institutional buyer procurement tenders to cut out intermediaries.
+          {t('smart_match_sub', 'AI-assisted direct linkage pairing Farmer/FPO produce lots with verified institutional buyer procurement tenders to cut out intermediaries.')}
         </p>
       </div>
 

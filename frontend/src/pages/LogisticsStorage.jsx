@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Warehouse, Truck, ShieldCheck, Thermometer, MapPin, Phone, Calendar, CheckCircle2, Navigation, Compass, ExternalLink, Search } from 'lucide-react';
 import { api } from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function LogisticsStorage({ currentUser, selectedState }) {
+  const { t } = useLanguage();
   const [facilities, setFacilities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterType, setFilterType] = useState('');
@@ -127,10 +129,10 @@ export default function LogisticsStorage({ currentUser, selectedState }) {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
           <Warehouse color="var(--primary)" size={24} />
-          <h2 style={{ fontSize: '1.5rem', color: '#fff' }}>Cold Storage & Agri-Logistics Booking</h2>
+          <h2 style={{ fontSize: '1.5rem', color: '#fff' }}>{t('logistics_title', 'Cold Storage & Agri-Logistics Booking')}</h2>
         </div>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-          Reserve WDRA-certified cold storage, climate-controlled warehouses, and transport trucks with real-time Google Maps GPS directions.
+          {t('logistics_sub', 'Reserve WDRA-certified cold storage, climate-controlled warehouses, and transport trucks with real-time Google Maps GPS directions.')}
         </p>
       </div>
 

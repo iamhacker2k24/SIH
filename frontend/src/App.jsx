@@ -16,9 +16,10 @@ import GovernmentSchemes from './pages/GovernmentSchemes';
 import AgriLoans from './pages/AgriLoans';
 import BuyerPanel from './pages/BuyerPanel';
 import FpoPanel from './pages/FpoPanel';
+import { useLanguage } from './context/LanguageContext';
 
 export default function App() {
-  const [selectedLanguage, setSelectedLanguage] = useState('English');
+  const { language: selectedLanguage, setLanguage: setSelectedLanguage, t } = useLanguage();
   const [selectedState, setSelectedState] = useState('');
 
   // Persistent User Session (localStorage + Cookie)
@@ -99,7 +100,7 @@ export default function App() {
         marginTop: '3rem',
         background: '#070f0b'
       }}>
-        <div>🌾 <strong>KrishiLink</strong> — Market Linkages & Price Discovery Platform</div>
+        <div>{t('footer_text', '🌾 KrishiLink — Market Linkages & Price Discovery Platform')}</div>
       </footer>
     </div>
   );
